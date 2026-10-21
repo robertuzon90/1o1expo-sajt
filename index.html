@@ -23,7 +23,7 @@ body{margin:0;background:#F5F2EC}
 .proc-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:40px 56px;align-items:start}@media (max-width:900px){.proc-grid{grid-template-columns:minmax(0,1fr)}}
 .pstep{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:20px;padding-bottom:28px}.pstep:last-child{padding-bottom:0}.pstep:not(:last-child)::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:#1C1A17}.pdot{width:44px;height:44px;box-sizing:border-box;border-radius:50%;background:#F5F2EC;border:2px solid #1C1A17;display:flex;align-items:center;justify-content:center;font-weight:600}
 @media (max-width:760px){.gal-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
-.offer-cta{}@media (max-width:820px){.offer-cta{align-items:flex-start!important}}
+.offer-cta{}@media (max-width:820px){.offer-cta{align-items:flex-start!important}.head-cta{justify-self:start!important}}
 .fsel{appearance:none;-webkit-appearance:none;padding-right:40px!important;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%279%27 viewBox=%270 0 14 9%27%3E%3Cpath d=%27M1 1l6 6 6-6%27 fill=%27none%27 stroke=%27%231C1A17%27 stroke-width=%271.8%27/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 14px center!important}
 .ffile{cursor:pointer;box-sizing:border-box}.ffile::file-selector-button{font-family:"DM Sans",sans-serif;font-weight:600;font-size:15px;min-height:34px;padding:0 14px;margin-right:12px;border:1.5px solid #1C1A17;border-radius:0;background:#F5F2EC;color:#1C1A17;cursor:pointer;transition:background .2s}.ffile:hover::file-selector-button{background:#DDF4EA}
 input:focus,select:focus{border-color:#13704D!important}
@@ -159,11 +159,11 @@ var svg=document.querySelector('.emap');if(svg)svg.addEventListener('mouseleave'
 var cc=document.querySelector('.cchips');if(cc)cc.addEventListener('mouseleave',clear);})();</script>
 
 <!-- COMPARISON -->
-<section style="max-width: 1240px; margin: 0 auto; padding: 104px 24px 0; display: flex; flex-direction: column; gap: 32px">
+<section style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 0; display: flex; flex-direction: column; gap: 32px">
   <div style="display: flex; align-items: center; gap: 14px"><span style="font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.08em; border: 1px solid #D8D1C5; padding: 5px 10px; background: #F5F2EC">YOUR OPTIONS</span><span style="flex: 1; height: 1px; background: #1C1A17"></span></div>
   <div class="split-head" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 12px 56px; align-items: start; width: 100%">
     <h2 style="margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">Three ways to get a stand built at a fair abroad.</h2>
-    <p style="margin: 0; color: #3F3B36">Each one works for someone. Here is the honest difference.</p>
+    <div class="head-cta" style="justify-self: end; align-self: start"><a href="#quote" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; background: #5ED3A2; color: #12100E; border-radius: 0; font-weight: 600; font-size: 16px; text-decoration: none; box-shadow: 0 10px 30px rgba(28,26,23,0.10)">Get your quote <span aria-hidden="true">→</span></a></div>
   </div>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); border-top: 1px solid #D8D1C5; border-left: 1px solid #D8D1C5">
     <div style="border-right: 1px solid #D8D1C5; border-bottom: 1px solid #D8D1C5; background: #DDF4EA; padding: 28px; display: flex; flex-direction: column; gap: 14px">
@@ -182,7 +182,6 @@ var cc=document.querySelector('.cchips');if(cc)cc.addEventListener('mouseleave',
       <span style="font-size: 16px; color: #3F3B36; line-height: 1.55">A polished result, priced for large budgets. Smaller stands are often handed to a junior team, and answers can take days.</span>
     </div>
   </div>
-  <a href="#quote" style="align-self: center; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; background: #5ED3A2; color: #12100E; border-radius: 0; font-weight: 600; font-size: 16px; text-decoration: none; box-shadow: 0 10px 30px rgba(28,26,23,0.10)">Get your quote <span aria-hidden="true">→</span></a>
 </section>
 
 <!-- GALLERY: replace the grey placeholders with concept images -->
@@ -233,7 +232,7 @@ var cc=document.querySelector('.cchips');if(cc)cc.addEventListener('mouseleave',
   <div style="display: flex; align-items: center; gap: 14px"><span style="font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.08em; border: 1px solid rgba(255,255,255,0.6); padding: 5px 10px; background: transparent; color: #FFFFFF">YOUR OFFER</span><span style="flex: 1; height: 1px; background: rgba(255,255,255,0.6)"></span></div>
   <div class="split-head" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 12px 56px; align-items: start; width: 100%">
     <h2 style="margin: 0; color: #FFFFFF; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">Know what you get before you pay anything.</h2>
-    <div class="offer-cta" style="display: flex; flex-direction: column; gap: 18px; align-items: flex-end">
+    <div class="offer-cta" style="display: flex; flex-direction: column; gap: 18px; align-items: flex-end; align-self: end">
       <a href="#quote" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; background: #5ED3A2; color: #0E3B2B; border-radius: 0; font-weight: 600; font-size: 16px; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.18)">Get your quote <span aria-hidden="true">→</span></a>
     </div>
   </div>
