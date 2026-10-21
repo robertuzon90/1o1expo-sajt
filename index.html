@@ -20,6 +20,8 @@ body{margin:0;background:#F5F2EC}
 .stype{transition:background-color .2s,box-shadow .2s}.stype:hover,.stype:focus-visible{background-color:#DDF4EA!important;box-shadow:inset 0 0 0 2px #5ED3A2}.stype:hover .stype-list{border-color:#BDECD7!important}
 @media (min-width:901px){#hero-stand{width:104%!important;max-width:none;margin-left:-2%}}
 @media (min-width:1280px){section.hero-grid{grid-template-columns:minmax(0,0.88fr) minmax(0,1.12fr)}.hero-fig{position:relative}#hero-stand{position:absolute;top:50%;left:3%;transform:translateY(-50%);height:auto!important;margin:0;width:min(calc(97% + (100vw - 1240px) / 2 + 12px), 740px)!important}}
+.proc-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:40px 56px;align-items:start}@media (max-width:900px){.proc-grid{grid-template-columns:minmax(0,1fr)}}
+.pstep{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:20px;padding-bottom:28px}.pstep:last-child{padding-bottom:0}.pstep:not(:last-child)::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:#1C1A17}.pdot{width:44px;height:44px;box-sizing:border-box;border-radius:50%;background:#F5F2EC;border:2px solid #1C1A17;display:flex;align-items:center;justify-content:center;font-weight:600}
 .price-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:40px 56px;align-items:start}
 @media (max-width:1160px){.price-grid{grid-template-columns:minmax(0,1fr)}}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;row-gap:26px}
@@ -150,75 +152,65 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #1370
 <div style="background: #0E3B2B; margin-top: 104px; padding-block: 112px"><!-- YOUR OFFER -->
 <section id="offer" style="max-width: 1240px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 32px">
   <div style="display: flex; align-items: center; gap: 14px"><span style="font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.08em; border: 1px solid rgba(255,255,255,0.6); padding: 5px 10px; background: transparent; color: #FFFFFF">YOUR OFFER</span><span style="flex: 1; height: 1px; background: rgba(255,255,255,0.6)"></span></div>
-  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 40px">
-    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 660px">
-      <h2 style="margin: 0; color: #FFFFFF; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">Know what you get before you pay anything.</h2>
+  <div class="split-head" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 12px 56px; align-items: start; width: 100%">
+    <h2 style="margin: 0; color: #FFFFFF; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">Know what you get before you pay anything.</h2>
+    <div style="display: flex; flex-direction: column; gap: 18px; align-items: flex-start">
       <p style="margin: 0; color: rgba(255,255,255,0.86)">Within 7 working days of your brief, three things land in your inbox.</p>
+      <a href="#quote" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; background: #5ED3A2; color: #0E3B2B; border-radius: 0; font-weight: 600; font-size: 16px; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.18)">Request yours <span aria-hidden="true">→</span></a>
     </div>
-    <a href="#quote" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; background: #5ED3A2; color: #0E3B2B; border-radius: 0; font-weight: 600; font-size: 16px; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.18)">Request yours <span aria-hidden="true">→</span></a>
   </div>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px">
-    <div style="display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); color: #FFFFFF; border-radius: 0; overflow: hidden">
-      <span style="padding: 18px 18px 0; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.1em; color: #5ED3A2; font-weight: 600">DESIGN</span>
-      <span style="padding: 8px 18px 0; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2">A design for your exact space</span>
-      <span style="padding: 10px 18px 18px; font-size: 16px; color: rgba(255,255,255,0.78); line-height: 1.55">A layout and visuals of your stand, drawn for your hall, your stand number and your open sides.</span>
-      <span style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.14); margin-top: auto; font-family: 'DM Sans', sans-serif; font-size: 12px"><span style="padding: 8px 12px; border-right: 1px solid rgba(255,255,255,0.14); display: flex; flex-direction: column"><span style="font-size: 12px; color: rgba(255,255,255,0.6)">BASED ON</span>Your floor plan</span><span style="padding: 8px 12px; display: flex; flex-direction: column"><span style="font-size: 12px; color: rgba(255,255,255,0.6)">CHANGES</span>Until it's right</span></span>
-    </div>
-    <div style="display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); color: #FFFFFF; border-radius: 0; overflow: hidden">
-      <span style="padding: 18px 18px 0; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.1em; color: #5ED3A2; font-weight: 600">PRICE</span>
-      <span style="padding: 8px 18px 0; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2">One total price</span>
-      <span style="padding: 10px 18px 18px; font-size: 16px; color: rgba(255,255,255,0.78); line-height: 1.55">The full cost of design, production, transport, build-up and dismantling. Before you sign, you see every item listed.</span>
-      <span style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.14); margin-top: auto; font-family: 'DM Sans', sans-serif; font-size: 12px"><span style="padding: 8px 12px; border-right: 1px solid rgba(255,255,255,0.14); display: flex; flex-direction: column"><span style="font-size: 12px; color: rgba(255,255,255,0.6)">PRICE</span>Fixed</span><span style="padding: 8px 12px; display: flex; flex-direction: column"><span style="font-size: 12px; color: rgba(255,255,255,0.6)">HIDDEN COSTS</span>None</span></span>
-    </div>
-    <div style="display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); color: #FFFFFF; border-radius: 0; overflow: hidden">
-      <span style="padding: 18px 18px 0; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.1em; color: #5ED3A2; font-weight: 600">SCHEDULE</span>
-      <span style="padding: 8px 18px 0; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2">Every date before your fair</span>
-      <span style="padding: 10px 18px 18px; font-size: 16px; color: rgba(255,255,255,0.78); line-height: 1.55">When production starts, when your stand ships and when the crew builds it, set against the organiser's deadlines.</span>
-      <span style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.14); margin-top: auto; font-family: 'DM Sans', sans-serif; font-size: 12px"><span style="padding: 8px 12px; border-right: 1px solid rgba(255,255,255,0.14); display: flex; flex-direction: column"><span style="font-size: 12px; color: rgba(255,255,255,0.6)">BUILD-UP</span>Before day 1</span><span style="padding: 8px 12px; display: flex; flex-direction: column"><span style="font-size: 12px; color: rgba(255,255,255,0.6)">DISMANTLING</span>Included</span></span>
+  <div style="border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.03); color: #FFFFFF; box-shadow: 0 20px 50px rgba(0,0,0,0.25)">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.14); font-size: 15px; color: rgba(255,255,255,0.78)"><span><span style="color: #FFFFFF; font-weight: 600">From</span> 1o1 expo &nbsp;·&nbsp; <span style="color: #FFFFFF; font-weight: 600">Subject</span> Your stand offer</span><span style="color: rgba(255,255,255,0.6)">Within 7 working days</span></div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; padding: clamp(14px, 2vw, 24px)">
+      <div style="border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); padding: 20px; display: flex; flex-direction: column; gap: 10px">
+        <span style="display: flex; gap: 12px; align-items: center"><span aria-hidden="true" style="flex: none; width: 40px; height: 48px; box-sizing: border-box; background: rgba(94,211,162,0.12); border: 1.5px solid #5ED3A2; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: #5ED3A2">PDF</span><span style="display: flex; flex-direction: column; min-width: 0"><span style="font-weight: 600; line-height: 1.3">Design.pdf</span><span style="font-size: 13px; color: rgba(255,255,255,0.6)">Based on your floor plan</span></span></span>
+        <span style="font-size: 22px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2">A design for your exact space</span>
+        <span style="font-size: 16px; color: rgba(255,255,255,0.78); line-height: 1.55">A layout and visuals of your stand, drawn for your hall, your stand number and your open sides. Changes until it's right.</span>
+      </div>
+      <div style="border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); padding: 20px; display: flex; flex-direction: column; gap: 10px">
+        <span style="display: flex; gap: 12px; align-items: center"><span aria-hidden="true" style="flex: none; width: 40px; height: 48px; box-sizing: border-box; background: rgba(94,211,162,0.12); border: 1.5px solid #5ED3A2; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: #5ED3A2">PDF</span><span style="display: flex; flex-direction: column; min-width: 0"><span style="font-weight: 600; line-height: 1.3">Price.pdf</span><span style="font-size: 13px; color: rgba(255,255,255,0.6)">Fixed, no hidden costs</span></span></span>
+        <span style="font-size: 22px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2">One total price</span>
+        <span style="font-size: 16px; color: rgba(255,255,255,0.78); line-height: 1.55">The full cost of design, production, transport, build-up and dismantling. Before you sign, you see every item listed.</span>
+      </div>
+      <div style="border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); padding: 20px; display: flex; flex-direction: column; gap: 10px">
+        <span style="display: flex; gap: 12px; align-items: center"><span aria-hidden="true" style="flex: none; width: 40px; height: 48px; box-sizing: border-box; background: rgba(94,211,162,0.12); border: 1.5px solid #5ED3A2; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: #5ED3A2">PDF</span><span style="display: flex; flex-direction: column; min-width: 0"><span style="font-weight: 600; line-height: 1.3">Schedule.pdf</span><span style="font-size: 13px; color: rgba(255,255,255,0.6)">Build-up before day 1</span></span></span>
+        <span style="font-size: 22px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2">Every date before your fair</span>
+        <span style="font-size: 16px; color: rgba(255,255,255,0.78); line-height: 1.55">When production starts, when your stand ships and when the crew builds it, set against the organiser's deadlines. Dismantling included.</span>
+      </div>
     </div>
   </div>
 </section></div>
 
 <!-- PROCESS -->
-<section id="process" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px 0; display: flex; flex-direction: column; gap: 32px">
-  <div style="display: flex; align-items: center; gap: 14px"><span style="font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.08em; border: 1px solid #D8D1C5; padding: 5px 10px; background: #F5F2EC">HOW IT WORKS</span><span style="flex: 1; height: 1px; background: #1C1A17"></span></div>
-  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 660px">
+<section id="process" class="proc-grid" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px 0">
+  <div style="display: flex; flex-direction: column; gap: 18px; align-items: flex-start">
+    <span style="font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.08em; border: 1px solid #D8D1C5; padding: 5px 10px; background: #F5F2EC">HOW IT WORKS</span>
     <h2 style="margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">From first message to opening day.</h2>
     <p style="margin: 0; color: #3F3B36">You always know what happens next, and nothing is produced before you say yes.</p>
+    <a href="#quote" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; background: #5ED3A2; border-radius: 0; color: #12100E; font-weight: 600; font-size: 16px; text-decoration: none; box-shadow: 0 10px 30px rgba(28,26,23,0.10)">Start with step 01 →</a>
   </div>
-  <ol style="list-style: none; margin: 0; padding: 26px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border-top: 2px solid #1C1A17">
-    <li style="position: relative; padding: 0 20px 0 0; display: flex; flex-direction: column; gap: 8px">
-      <span aria-hidden="true" style="position: absolute; left: 0; top: -34px; width: 2px; height: 16px; background: #1C1A17"></span>
-      <span style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #13704D; font-weight: 500">STEP 1</span>
-      <span style="font-size: 19px; font-weight: 600; line-height: 1.25">Tell us about your fair</span>
-      <span style="font-size: 16px; color: #3F3B36; line-height: 1.5">Your fair, hall, stand size and what you want visitors to remember. Rough notes and a phone photo of the floor plan are fine.</span>
+  <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+    <li class="pstep">
+      <span class="pdot">1</span>
+      <span style="display: flex; flex-direction: column; gap: 4px; padding-top: 6px"><span style="font-size: 21px; font-weight: 600; line-height: 1.3">Tell us about your fair</span><span style="font-size: 16px; color: #3F3B36; line-height: 1.5">Your fair, hall, stand size and what you want visitors to remember. Rough notes and a phone photo of the floor plan are fine.</span></span>
     </li>
-    <li style="position: relative; padding: 0 20px 0 0; display: flex; flex-direction: column; gap: 8px">
-      <span aria-hidden="true" style="position: absolute; left: 0; top: -34px; width: 2px; height: 16px; background: #1C1A17"></span>
-      <span style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #13704D; font-weight: 500">STEP 2 · ≤ 7 WORKING DAYS</span>
-      <span style="font-size: 19px; font-weight: 600; line-height: 1.25">Get your offer</span>
-      <span style="font-size: 16px; color: #3F3B36; line-height: 1.5">A first design and one fixed price for the whole stand, so you see what you pay for.</span>
+    <li class="pstep">
+      <span class="pdot">2</span>
+      <span style="display: flex; flex-direction: column; gap: 4px; padding-top: 6px"><span style="font-size: 21px; font-weight: 600; line-height: 1.3">Get your offer <span style="display: inline-block; vertical-align: middle; margin-left: 6px; font-size: 13px; font-weight: 500; color: #13704D; background: #DDF4EA; padding: 2px 8px">≤ 7 working days</span></span><span style="font-size: 16px; color: #3F3B36; line-height: 1.5">A first design and one fixed price for the whole stand, so you see what you pay for.</span></span>
     </li>
-    <li style="position: relative; padding: 0 20px 0 0; display: flex; flex-direction: column; gap: 8px">
-      <span aria-hidden="true" style="position: absolute; left: 0; top: -34px; width: 2px; height: 16px; background: #1C1A17"></span>
-      <span style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #13704D; font-weight: 500">STEP 3</span>
-      <span style="font-size: 19px; font-weight: 600; line-height: 1.25">Approve the design</span>
-      <span style="font-size: 16px; color: #3F3B36; line-height: 1.5">We adjust the design with you until it fits. Production starts only after your yes.</span>
+    <li class="pstep">
+      <span class="pdot">3</span>
+      <span style="display: flex; flex-direction: column; gap: 4px; padding-top: 6px"><span style="font-size: 21px; font-weight: 600; line-height: 1.3">Approve the design</span><span style="font-size: 16px; color: #3F3B36; line-height: 1.5">We adjust the design with you until it fits. Production starts only after your yes.</span></span>
     </li>
-    <li style="position: relative; padding: 0 20px 0 0; display: flex; flex-direction: column; gap: 8px">
-      <span aria-hidden="true" style="position: absolute; left: 0; top: -34px; width: 2px; height: 16px; background: #1C1A17"></span>
-      <span style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #13704D; font-weight: 500">STEP 4</span>
-      <span style="font-size: 19px; font-weight: 600; line-height: 1.25">We produce, deliver and build</span>
-      <span style="font-size: 16px; color: #3F3B36; line-height: 1.5">Walls, flooring, lighting and graphics are made, checked and shipped to the venue. We help you with the organiser's technical forms.</span>
+    <li class="pstep">
+      <span class="pdot">4</span>
+      <span style="display: flex; flex-direction: column; gap: 4px; padding-top: 6px"><span style="font-size: 21px; font-weight: 600; line-height: 1.3">We produce, deliver and build</span><span style="font-size: 16px; color: #3F3B36; line-height: 1.5">Walls, flooring, lighting and graphics are made, checked and shipped to the venue. We help you with the organiser's technical forms.</span></span>
     </li>
-    <li style="position: relative; padding: 0 20px 0 0; display: flex; flex-direction: column; gap: 8px">
-      <span aria-hidden="true" style="position: absolute; left: -1px; top: -38px; width: 22px; height: 22px; border-radius: 50%; background: #5ED3A2; border: 2px solid #1C1A17; box-sizing: border-box"></span>
-      <span style="font-family: 'DM Sans', sans-serif; font-size: 12px; color: #13704D; font-weight: 500">OPENING DAY</span>
-      <span style="font-size: 19px; font-weight: 600; line-height: 1.25">Walk onto a finished stand</span>
-      <span style="font-size: 16px; color: #3F3B36; line-height: 1.5">You arrive at a stand ready for visitors. When the fair closes, we take it down. You just leave.</span>
+    <li class="pstep">
+      <span class="pdot" style="background: #5ED3A2"><span aria-hidden="true">✓</span></span>
+      <span style="display: flex; flex-direction: column; gap: 4px; background: #DDF4EA; padding: 16px 20px"><span style="font-size: 12px; letter-spacing: 0.1em; font-weight: 600; color: #13704D">OPENING DAY</span><span style="font-size: 21px; font-weight: 600; line-height: 1.3">Walk onto a finished stand</span><span style="font-size: 16px; color: #3F3B36; line-height: 1.5">You arrive at a stand ready for visitors. When the fair closes, we take it down. You just leave.</span></span>
     </li>
   </ol>
-  <a href="#quote" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; background: #F5F2EC; border: 1.5px solid #1C1A17; border-radius: 0; color: #1C1A17; font-weight: 600; font-size: 16px; text-decoration: none">Start with step 01 →</a>
 </section>
 
 <!-- PRICE (bill of materials) + NOTES -->
