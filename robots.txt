@@ -3,3 +3,5 @@ Allow: /
 
 User-agent: *
 Disallow: /
+
+Sitemap: https://1o1expo.com/sitemap.xml
