@@ -5,6 +5,15 @@ Statični sajt za 1o1 expo. Netlify ga automatski objavljuje kad se nešto prome
 ## Fajlovi
 - `index.html` – ceo sajt (jedna strana)
 - `thanks.html` – strana koja se prikaže posle slanja upita
+- `guides/` – svi vodiči i kalendar, svaki u svom folderu (`guides/naziv/index.html`, adresa `/guides/naziv/`)
+- `_redirects` – stare adrese vodiča (`guide-*.html`) vode na nove
+
+## Novi vodič
+
+1. Kopirati folder postojećeg vodiča u `guides/novi-naziv/`.
+2. Promeniti naslov, opis, canonical, og:url, og:image, JSON-LD (headline, datumi, slika, mainEntityOfPage, BreadcrumbList) i share linkove.
+3. Dodati karticu na `guides/index.html` i po potrebi u "Your next read" drugih vodiča.
+4. Dodati adresu u `sitemap.xml`.
 - `img/` – fotografije i favicon
 - `logo/` – logo u SVG formatu (tamni, beli, samo ikonica)
 - `robots.txt` – sajt je skriven od Google-a dok ne krene zvanično
