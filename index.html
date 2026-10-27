@@ -450,4 +450,5 @@ lb.querySelector('.lb-x').addEventListener('click',close);lb.querySelector('.lb-
 lb.addEventListener('click',function(e){if(e.target===lb)close()});
 document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
 var x0=null;lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1));x0=null});})();</script>
-<style>.own-design .stype-cta:hover{animation:ctaline .45s ease-out}@media (max-width:700px){.own-design{padding:20px!important}}</style></body></html>
+<style>.own-design .stype-cta:hover{animation:ctaline .45s ease-out}@media (max-width:700px){.own-design{padding:20px!important}}</style><script>(function(){try{var f=new URLSearchParams(location.search).get("fair");if(!f)return;var i=document.querySelector('input[name="fair"]');if(i&&!i.value)i.value=f.slice(0,120);}catch(e){}})();</script>
+</body></html>
