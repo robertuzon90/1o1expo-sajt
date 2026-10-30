@@ -50,8 +50,10 @@ def run(path, de=False):
     nav2 = ANCHOR.sub(lambda m: block(m, de), nav, count=1)
     if nav2 == nav: return False
     s = s[:h] + nav2 + s[e:]
-    s = re.sub(r'<style id="fdd-css">.*?</style>', '', s, flags=re.S)
-    s = s.replace('</head>', CSS + '\n</head>', 1)
+    if '<style id="fdd-css">' in s:
+        s = re.sub(r'<style id="fdd-css">.*?</style>', lambda m: CSS, s, count=1, flags=re.S)
+    else:
+        s = s.replace('</head>', CSS + '\n</head>', 1)
     open(path, 'w').write(s)
     return True
 
