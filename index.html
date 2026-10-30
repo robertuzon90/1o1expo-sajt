@@ -76,6 +76,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #1370
 @media (max-width:1100px){.pl{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}.pl li{padding:6px 24px}.pl li:nth-child(odd){padding-left:0;border-left:0}}
 @media (max-width:520px){.pl{grid-template-columns:1fr;row-gap:14px}.pl li{padding:0!important;border-left:0}}
 </style>
+
+<style id="fdd-css">.fdd{position:relative;display:flex;align-items:center}.fdd>a::after{content:"";display:inline-block;width:6px;height:6px;margin-left:8px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:translateY(-3px) rotate(45deg);transition:transform .2s}.fdd:hover>a::after,.fdd:focus-within>a::after{transform:translateY(0) rotate(225deg)}.fdd-m{position:absolute;left:-22px;top:100%;padding-top:14px;z-index:60;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .18s,transform .18s,visibility .18s}.fdd:hover .fdd-m,.fdd:focus-within .fdd-m{opacity:1;visibility:visible;transform:none}.fdd-p{display:flex;flex-direction:column;width:330px;background:#FFFFFF;border:1px solid #D8D1C5;box-shadow:0 18px 40px rgba(28,26,23,.12);padding:8px}.fdd-p a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:9px 12px;color:#1C1A17!important;text-decoration:none;font-size:15px;font-weight:500!important}.fdd-p a:hover,.fdd-p a:focus-visible{background:#DDF4EA}.fdd-p a .fdd-d{flex:none;font-size:13px;color:#6B665F;font-weight:400}.fdd-p a.fdd-all{color:#13704D!important;font-weight:600!important;border-bottom:1px solid #E6E0D6;margin-bottom:4px;padding-bottom:11px}</style>
 </head>
 <body>
 
@@ -91,7 +93,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #1370
     </a>
     <nav class="hide-sm" aria-label="Main" style="display: flex; gap: 28px; font-size: 16px; font-weight: 500">
       <a href="#stands" style="color: #1C1A17; text-decoration: none">Stand types</a>
-      <a href="fairs/" style="color: #1C1A17; text-decoration: none">Trade fairs</a>
+      <div class="fdd"><a href="fairs/" style="color: #1C1A17; text-decoration: none">Trade fairs</a><div class="fdd-m"><span class="fdd-p"><a href="fairs/" class="fdd-all">All trade fairs&nbsp;→</a><a href="fairs/ambiente-frankfurt/"><span>Ambiente Frankfurt</span><span class="fdd-d">29 Jan – 2 Feb 2027</span></a><a href="fairs/mwc-barcelona/"><span>MWC Barcelona</span><span class="fdd-d">1–4 Mar 2027</span></a><a href="fairs/reneo-budapest/"><span>RENEO Budapest</span><span class="fdd-d">Apr 2027 (TBC)</span></a><a href="fairs/hannover-messe/"><span>Hannover Messe</span><span class="fdd-d">5–8 Apr 2027</span></a><a href="fairs/intersolar-europe/"><span>Intersolar Europe Munich</span><span class="fdd-d">8–10 Jun 2027</span></a><a href="fairs/eurobike-frankfurt/"><span>Eurobike Frankfurt</span><span class="fdd-d">30 Jun – 2 Jul 2027</span></a><a href="fairs/gamescom-cologne/"><span>gamescom Cologne</span><span class="fdd-d">23–29 Aug 2027</span></a><a href="fairs/ifa-berlin/"><span>IFA Berlin</span><span class="fdd-d">3–7 Sep 2027</span></a><a href="fairs/sbc-summit-lisbon/"><span>SBC Summit Lisbon</span><span class="fdd-d">21–23 Sep 2027</span></a><a href="fairs/cphi-frankfurt/"><span>CPHI Frankfurt</span><span class="fdd-d">9–11 Nov 2027</span></a><i class="fdd-x"></i></span></div></div>
       <a href="#pricing" style="color: #1C1A17; text-decoration: none">Pricing</a>
       <a href="#process" style="color: #1C1A17; text-decoration: none">How it&nbsp;works</a>
       <a href="#faq" style="color: #1C1A17; text-decoration: none">FAQ</a>
@@ -120,7 +122,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #1370
   <figure class="hero-fig" style="margin: 0; min-width: 0; display: flex; flex-direction: column; justify-content: center">
     
   </figure>
-</section><span class="hero-ill">Illustration</span></div>
+</section></div>
 
 
 <!-- STAND TYPES -->

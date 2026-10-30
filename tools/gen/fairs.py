@@ -1,8 +1,9 @@
 import re, json, os, urllib.parse
 SITE = '/home/claude/1o1expo-sajt/'
-L = open(SITE + 'guides/stand-cost/index.html').read().split('\n')
-HEAD0 = '\n'.join(L[:118])
-TAIL0 = '\n'.join(L[132:])
+_T = open(SITE + 'guides/stand-cost/index.html').read()
+_T = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n?', '', _T)
+HEAD0 = _T[:_T.find('</header>')].rstrip('\n')
+TAIL0 = _T[_T.rfind('<section', 0, _T.find('class="cta-box')):]
 
 MF_BUILD = 'https://builder.messefrankfurt.com/frankfurt/en/event-specific-information/cphi.html'
 FAIRS = [
@@ -99,6 +100,9 @@ FAIRS = [
             "<b>Good light and power where you need it.</b> For screens, a coffee machine and charging, planned with the organiser's electricity order."]),
 ]
 BY = {f['slug']: f for f in FAIRS}
+LAYOUT = 'side'
+OUTDIR = None
+ICO = {'Dates': '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>', 'Venue': '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>', 'Brief us by': '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'}
 
 P = '<p style="margin: 0">'
 def H2(id_, t): return f'<section id="{id_}" style="scroll-margin-top: 24px; display: flex; flex-direction: column; gap: 20px; padding-top: 40px; border-top: 1px solid #D8D1C5"><h2 style="margin: 0; font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 600">{t}</h2>'
@@ -158,7 +162,11 @@ def render(F):
 <p style="margin: 0; max-width: 38em; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,.85)">Send us your hall, stand number and a few notes. Within 7 working days you get a design and one all-inclusive price, and our team takes care of production, transport, build-up and dismantling at {F['venue']}.</p>
 <div class="fx" style="display: flex; flex-wrap: wrap; gap: 16px 0; margin: 6px 0 0 -28px">{fx}</div>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 10px"><a href="{quote}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 24px; background: #5ED3A2; color: #12100E; font-weight: 600; font-size: 17px; text-decoration: none">Get a quote for {F['name']} <span aria-hidden="true">→</span></a><span style="font-size: 15px; color: rgba(255,255,255,.7)">Free and without obligation.</span></div>
-</div><figure class="fh-img" style="margin: 0; position: relative"><img src="../../img/{F['img']}" alt="Concept visualisation of an exhibition stand" width="1200" height="900" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3.4; object-fit: cover; box-shadow: 0 24px 48px rgba(0,0,0,.28)"><figcaption style="margin-top: 10px; font-size: 13px; color: rgba(255,255,255,.65)">Concept visualisation</figcaption></figure></div></section>'''
+</div><figure class="fh-img" style="margin: 0; position: relative"><img src="../../img/{F['img']}" alt="Concept visualisation of an exhibition stand" width="1200" height="900" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3.4; object-fit: cover; box-shadow: 0 24px 48px rgba(0,0,0,.28)"></figure></div></section>'''
+    if LAYOUT == 'guide':
+        gi = ''.join(f'<span class="gh-i" style="display: inline-flex; align-items: center; gap: 8px; white-space: nowrap"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#5ED3A2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none">{ICO[k]}</svg><span style="color: rgba(255,255,255,.7)">{k}</span><b style="color: #FFFFFF; font-weight: 600">{v}</b></span>' for k, v in facts)
+        hero = f'''</header><section style="background: #0E3B2B; color: #FFFFFF"><div class="gh" style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 48px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center"><a href="../" style="color: #5ED3A2; text-decoration: none; font-weight: 600; font-size: 15px">← All&nbsp;trade&nbsp;fairs</a><span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2">{F['sector'].upper()} · {F['city'].upper()}</span><h1 style="margin: 0; max-width: 20em; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">Exhibition stands for {F['full']}&nbsp;{yr}</h1><p style="margin: 0; max-width: 36em; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,.85)">Send us your hall, stand number and a few notes. Within 7 working days you get a design and one all-inclusive price, and our team takes care of production, transport, build-up and dismantling at {F['venue']}.</p><div class="gh-meta" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 32px; font-size: 15px">{gi}</div><div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 22px; margin-top: 6px"><a href="{quote}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; background: #5ED3A2; color: #12100E; font-weight: 600; font-size: 17px; text-decoration: none">Get a quote for {F['name']} <span aria-hidden="true">→</span></a><span style="font-size: 15px; color: rgba(255,255,255,.7)">Free and without obligation.</span></div></div></section>
+<div class="gh-cover"><div style="max-width: 1240px; margin: 0 auto; padding: 0 24px"><figure style="margin: 0"><img fetchpriority="high" src="../../img/{F['img']}" alt="Concept visualisation of an exhibition stand for {F['full']}" width="1200" height="896" style="display: block; width: 100%; height: auto; aspect-ratio: 21 / 9; object-fit: cover; object-position: center {F.get('pos','55%')}"></figure></div></div>'''
     toc_items = [('about', f"About {F['name']}"), ('timeline', 'Your timeline'), ('stand', 'What works on the stand'), ('price', 'What our price covers'), ('questions', 'Common questions')]
     toc = '<nav class="toc" aria-label="On this page" style="position: sticky; top: 24px; display: flex; flex-direction: column; font-size: 15px"><span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5B5650; padding-bottom: 8px">ON THIS&nbsp;PAGE</span>' + ''.join(f'<a href="#{i}" style="color: #1C1A17; text-decoration: none; padding: 6px 0; border-bottom: 1px solid #E6E0D6">{t}</a>' for i, t in toc_items) + '</nav>'
     about = H2('about', f"About {F['full']}").replace('; padding-top: 40px; border-top: 1px solid #D8D1C5', '', 1) + ''.join(P + p + '</p>' for p in F['about']) + SRC(F['src']) + '</section>'
@@ -189,8 +197,9 @@ def render(F):
 {faqh}
 </article></div></section>
 <style>@media (max-width:960px){{.fh{{grid-template-columns:minmax(0,1fr)!important}}.fh-img{{display:none}}}}@media (max-width:900px){{.art{{grid-template-columns:minmax(0,1fr)!important;gap:24px!important}}.toc{{position:static!important}}}}@media (max-width:700px){{.pc2{{grid-template-columns:1fr!important}}.pc2-r{{border-left:0!important;padding-left:0!important;border-top:1px solid #D8D1C5}}.fx>div{{padding:0 18px!important}}}}</style>'''
-    os.makedirs(SITE + f"fairs/{F['slug']}", exist_ok=True)
-    open(SITE + f"fairs/{F['slug']}/index.html", 'w').write(h + '\n' + hero + '\n' + body + '\n' + tail(quote))
+    od = OUTDIR or F['slug']
+    os.makedirs(SITE + f"fairs/{od}", exist_ok=True)
+    open(SITE + f"fairs/{od}/index.html", 'w').write(h + '\n' + hero + '\n' + body + '\n' + tail(quote))
 
 def hub():
     title = 'Exhibition stands at trade fairs across Europe'
@@ -210,6 +219,10 @@ def hub():
     h = h.replace('href="../fairs/" aria-current', 'href="./" aria-current')
     open(SITE + 'fairs/index.html', 'w').write(h + '\n' + hero + '\n' + t)
 
-for f in FAIRS: render(f)
-hub()
+import sys
+if '--preview' in sys.argv:
+    LAYOUT='guide'; OUTDIR='preview-hannover'; render(BY['hannover-messe'])
+else:
+    for f in FAIRS: render(f)
+    hub()
 print('ok', len(FAIRS))
