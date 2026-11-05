@@ -69,7 +69,7 @@ def hero_side(crumb, eyebrow, h1, lead, facts, cta_href, cta_text, img, alt, not
     fx = ''.join(f'<div style="display: flex; flex-direction: column; gap: 4px; padding: 0 28px; border-left: 1px solid rgba(255,255,255,.22)"><span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2">{k.upper()}</span><b style="font-size: 18px; font-weight: 600">{v}</b></div>' for k, v in facts)
     return f'''</header><section style="background: #0E3B2B; color: #FFFFFF"><div class="fh" style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 56px; display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: 48px; align-items: center"><div style="display: flex; flex-direction: column; gap: 22px">
 <nav aria-label="Breadcrumb" style="font-size: 15px; color: rgba(255,255,255,.7)">{crumb}</nav>
-<span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2">{eyebrow}</span>
+<span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2; margin-bottom: -10px">{eyebrow}</span>
 <h1 style="margin: 0; max-width: 18em; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">{h1}</h1>
 <p style="margin: 0; max-width: 38em; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,.85)">{lead}</p>
 <div class="fx" style="display: flex; flex-wrap: wrap; gap: 16px 0; margin: 6px 0 0 -28px">{fx}</div>
@@ -206,7 +206,7 @@ def quote_page():
     h = ld([faq_ld(faq)], h)
     main = f'''</header><section id="quote" style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 6vw, 72px) 24px 0"><div class="qp" style="display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); grid-template-areas: 'intro form' 'aside form'; gap: 24px 48px; align-items: start">
 <div style="grid-area: intro; display: flex; flex-direction: column; gap: 24px">
-<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.08em; font-weight: 700; color: #1F845B">YOUR QUOTE</span>
+<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.08em; font-weight: 700; color: #1F845B; margin-bottom: -12px">YOUR QUOTE</span>
 <h1 style="margin: 0; font-size: clamp(34px, 4.4vw, 52px); line-height: 1.04; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">A design and one price for your&nbsp;stand.</h1>
 <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #3F3B36">Only your fair and your email are required. The rest takes two minutes, and missing details are&nbsp;fine.</p>
 </div>

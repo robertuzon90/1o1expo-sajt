@@ -29,7 +29,7 @@ links = [('/fairs/', 'Trade fairs', 'Stands for Hannover Messe, CPHI, MWC, games
 cards = ''.join(f'<a href="{h}" class="nf-c"><b>{t}&nbsp;→</b><span>{d}</span></a>' for h, t, d in links)
 body = f'''</header><section style="background: #0E3B2B; color: #FFFFFF"><div class="nf" style="max-width: 1240px; margin: 0 auto; padding: 72px 24px 80px; display: grid; grid-template-columns: minmax(0,1fr) 360px; gap: 48px; align-items: center">
 <div style="display: flex; flex-direction: column; gap: 20px">
-<span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2">ERROR 404</span>
+<span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2; margin-bottom: -8px">ERROR 404</span>
 <h1 style="margin: 0; font-size: clamp(36px, 5vw, 60px); line-height: 1.04; letter-spacing: -0.03em; font-weight: 600">This stand isn't&nbsp;here.</h1>
 <p style="margin: 0; max-width: 34em; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,.85)">The page you are looking for doesn't exist, or it has moved. Let's get you back on the right&nbsp;aisle.</p>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 8px"><a href="/" style="display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 24px; background: #5ED3A2; color: #12100E; font-weight: 600; font-size: 17px; text-decoration: none">Back to the homepage {ARROW}</a><a href="/index.html#quote" style="color: #FFFFFF; font-weight: 600; font-size: 17px; text-decoration: none; padding-bottom: 4px; background: linear-gradient(#5ED3A2,#5ED3A2) left bottom / 100% 2px no-repeat">or get your quote</a></div>
