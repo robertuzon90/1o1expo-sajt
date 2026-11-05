@@ -11,6 +11,33 @@ INDEX = open(SITE + 'index.html').read()
 FORM0 = INDEX[INDEX.index('<form name="quote"'):INDEX.index('</form>', INDEX.index('<form name="quote"')) + 7]
 BOOK = 'https://bookings.cloud.microsoft/bookwithme/user/a20ad59f87524954acb3bec7ebf8fafe@1o1expo.com/meetingtype/E-M3e0osO02kEq45CkuijQ2?anonymous'
 
+def _sec(html, id_):
+    i = html.index(f'id="{id_}"'); i = html.rfind('<section', 0, i); j = html.index('</section>', i) + 10
+    return html[i:j]
+def home_css(classes):
+    """Copy the homepage CSS rules that style the given classes, so shared sections look identical."""
+    out = []
+    for css in re.findall(r'<style[^>]*>(.*?)</style>', INDEX, re.S):
+        i, n = 0, len(css)
+        while i < n:
+            j = css.find('{', i)
+            if j < 0: break
+            sel = css[i:j].strip()
+            if sel.startswith('@'):
+                depth, k = 1, j + 1
+                while depth and k < n:
+                    depth += {'{': 1, '}': -1}.get(css[k], 0); k += 1
+                rules = [r + '}' for r in css[j + 1:k - 1].split('}') if r.strip()]
+                keep = [r for r in rules if any(re.search(re.escape(c) + r'(?![\w-])', r.split('{')[0]) for c in classes)]
+                if keep: out.append(sel + '{' + ''.join(keep) + '}')
+                i = k
+            else:
+                k = css.find('}', j)
+                if any(re.search(re.escape(c) + r'(?![\w-])', sel) for c in classes): out.append(css[i:k + 1].strip())
+                i = k + 1
+    return '<style>' + '\n'.join(out) + '</style>'
+SHARED = ['.proc-grid', '.pstep', '.pdot', '.fx', '.faq-plus', '.split-head', '.receipt', '.receipt-wrap', '.receipt-grid', '.stype', '.stype-img', '.stype-name', '.stype-list', '.stype-grid', '.m-only', '.d-only', '.band-faq']
+
 P = '<p style="margin: 0">'
 NB = lambda s: s.replace('&nbsp;', ' ')
 def H2(id_, t, first=False):
@@ -178,35 +205,32 @@ def stand(S):
     imgs = ''.join(f'<figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><img src="../../img/concept-{S["slug"]}-{i}.jpg" alt="Concept visualisation of {S["art"]}, design {i}" width="1200" height="900" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid #D8D1C5"><figcaption style="font-size: 14px; color: #5B5650">Concept visualisation</figcaption></figure>' for i in (1, 2))
     designs = (f'<section id="designs" style="{W}; padding-top: 104px; display: flex; flex-direction: column; gap: 32px"><div style="display: flex; flex-direction: column; gap: 20px">{lab("CONCEPT DESIGNS")}<h2 style="{H2S}">Two concepts for {S["art"]}</h2></div>'
                f'<div class="sp-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">{imgs}</div></section>')
-    # 4 price: beige band, text left, list card right
-    rows = ''.join(f'<div style="display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid #E6E0D6; font-size: 16px"><span>{x}</span><span style="font-weight: 600; color: #13704D">Included</span></div>' for x in INC)
-    price = (f'<section id="price" style="margin-top: 104px; background: #F2EEE6"><div class="sp-2" style="{W}; padding-top: 104px; padding-bottom: 104px; display: grid; grid-template-columns: minmax(0,5fr) minmax(0,6fr); gap: 40px 64px; align-items: start">'
-             f'<div style="display: flex; flex-direction: column; gap: 20px">{lab("ONE PRICE")}<h2 style="{H2S}">What our price&nbsp;covers</h2><p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3F3B36">One all-inclusive price for the whole stand, agreed before anything is made. The stand type does not change our price; size, design, materials and finish&nbsp;do.</p>'
-             f'<a href="{quote}" style="margin-top: 8px; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; background: #5ED3A2; color: #12100E; font-weight: 600; font-size: 16px; text-decoration: none">Get your quote <span aria-hidden="true">→</span></a></div>'
-             f'<div style="background: #FFFFFF; border: 1.5px solid #1C1A17; padding: 24px 28px"><div style="display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1.5px solid #1C1A17; font-weight: 600"><span>Your stand price</span><span style="font-size: 12px; letter-spacing: .08em; color: #5B5650">1o1 EXPO</span></div>{rows}'
-             f'<p style="margin: 16px 0 0; padding: 12px 14px; background: #FBF3DF; color: #8A6A1E; font-size: 14px; line-height: 1.55"><b>Not in our price:</b> floor space, electricity, water and other venue services. You book and pay these directly with the&nbsp;organiser.</p></div></div></section>')
-    # 5 how it works: four steps in a row
-    st = ''.join(f'<div style="display: flex; flex-direction: column; gap: 10px; position: relative"><span style="width: 40px; height: 40px; border-radius: 50%; background: {"#5ED3A2" if i == 3 else "#0E3B2B"}; color: {"#0E3B2B" if i == 3 else "#FFFFFF"}; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; position: relative; z-index: 1">{i+1}</span><b style="font-size: 20px; font-weight: 600; line-height: 1.25">{t}</b><span style="font-size: 16px; line-height: 1.6; color: #3F3B36">{d}</span></div>' for i, (t, d) in enumerate(STEPS))
-    process = (f'<section id="process" style="{W}; padding-top: 104px; display: flex; flex-direction: column; gap: 40px"><div class="sp-2" style="display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 20px 64px; align-items: end">'
-               f'<div style="display: flex; flex-direction: column; gap: 20px">{lab("HOW IT WORKS")}<h2 style="{H2S}">From first message to opening&nbsp;day</h2></div>'
-               f'<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3F3B36">You always know what happens next, and nothing is produced before you say&nbsp;yes.</p></div>'
-               f'<div class="sp-steps" style="display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 32px; position: relative"><span class="sp-line" aria-hidden="true" style="position: absolute; left: 20px; right: 20px; top: 19px; height: 2px; background: #0E3B2B"></span>{st}</div></section>')
-    # 6 questions: dark band, heading left, accordion right
-    qa = ''.join(f'<details class="sp-q" style="border-top: 1px solid rgba(255,255,255,.2)"><summary style="list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 18px; color: #FFFFFF"><span>{q}</span><span class="sp-plus" aria-hidden="true" style="flex: none; width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid #5ED3A2; color: #5ED3A2; display: flex; align-items: center; justify-content: center; transition: transform .2s">+</span></summary><p style="margin: 0; padding: 0 0 22px; font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.8)">{a.replace("<a ", "<a style=\"color: #5ED3A2\" ")}</p></details>' for q, a in faq)
-    qs = (f'<section id="questions" style="margin-top: 104px; background: #0E3B2B; color: #FFFFFF"><div class="sp-2" style="{W}; padding-top: 104px; padding-bottom: 104px; display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 40px 80px; align-items: start">'
-          f'<div style="display: flex; flex-direction: column; gap: 20px">{lab("QUESTIONS", "#5ED3A2")}<h2 style="{H2S}; color: #FFFFFF">Common questions about {S["plural"].lower()}</h2></div>'
-          f'<div style="border-bottom: 1px solid rgba(255,255,255,.2)">{qa}</div></div></section>')
-    # 7 other stand types: cards with photos
-    oc = ''.join(f'<a href="../{o["slug"]}/" class="ocard" style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #E6E0D6; color: #1C1A17; text-decoration: none"><img src="../../img/stand-type-{o["slug"]}.jpg" alt="" width="1000" height="747" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover"><span style="display: flex; flex-direction: column; gap: 4px; padding: 18px 20px 20px"><span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #13704D">{o["sides"].upper()}</span><b style="font-size: 20px; font-weight: 600">{o["plural"]}&nbsp;→</b></span></a>' for o in STANDS if o is not S)
+    # 4-7: the same sections as on the homepage (copied from index.html, content adapted)
+    price = _sec(INDEX, 'pricing').replace('href="#quote"', f'href="{quote}"').replace('<section id="pricing" style="margin-top: 0;', '<section id="pricing" style="margin-top: 104px;', 1)
+    process = _sec(INDEX, 'process')
+    hf = _sec(INDEX, 'faq')
+    det = re.search(r'<details class="fx".*?</details>', hf, re.S).group(0)
+    def qa(q, a):
+        d = re.sub(r'(<span style="font-size: 18px; font-weight: 600; line-height: 1.35">).*?(</span>)', lambda m: m.group(1) + q + m.group(2), det, count=1, flags=re.S)
+        return re.sub(r'(<p style="margin: 0; font-size: 16px; color: rgba\(255,255,255,0.78\); line-height: 1.6">).*?(</p>)', lambda m: m.group(1) + a.replace('<a ', '<a style="color: #5ED3A2" ') + m.group(2), d, count=1, flags=re.S)
+    grp = lambda t, items: f'<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0"><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: #5ED3A2">{t}</span>' + ''.join(qa(q, a) for q, a in items) + '</div>'
+    head_ = hf[:hf.index('<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr))')]
+    head_ = re.sub(r'(<h2[^>]*>).*?(</h2>)', lambda m: m.group(1) + f'Common questions about {S["plural"].lower()}' + m.group(2), head_, count=1, flags=re.S)
+    qs = ('<div class="band-faq" style="margin-top: 104px; padding-block: 104px; background-color: #0E3B2B">' + head_
+          + '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 32px 40px; align-items: start">'
+          + grp(S['plural'].upper(), S['faq']) + grp('BEFORE YOU&nbsp;BOOK', COMMON_FAQ) + '</div></section></div>')
+    st = _sec(INDEX, 'stands')
+    cards = [c for c in re.findall(r'<a href="stands/[a-z]+/" class="stype".*?</a>', st, re.S) if f'stands/{S["slug"]}/' not in c]
+    cards = [c.replace('href="stands/', 'href="../').replace('src="img/', 'src="../../img/') for c in cards]
     others = (f'<section id="others" style="{W}; padding-top: 104px; display: flex; flex-direction: column; gap: 32px"><div class="sp-2" style="display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 20px 64px; align-items: end">'
               f'<div style="display: flex; flex-direction: column; gap: 20px">{lab("OTHER STAND TYPES")}<h2 style="{H2S}">Compare the other&nbsp;types</h2></div>'
               f'<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3F3B36">All four side by side, including how the space rent changes, in our guide to <a href="../../guides/stand-types/">stand types</a>.</p></div>'
-              f'<div class="sp-3" style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px">{oc}</div></section>')
+              f'<div class="stype-grid sp-3" style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px">{"".join(cards)}</div></section>')
     css = ('<style>@media (max-width:960px){.fh{grid-template-columns:minmax(0,1fr)!important}.fh-img{display:none!important}}'
            '@media (max-width:900px){.sp-2{grid-template-columns:minmax(0,1fr)!important}.sp-steps{grid-template-columns:repeat(2,minmax(0,1fr))!important}.sp-line{display:none}.sp-3{grid-template-columns:repeat(2,minmax(0,1fr))!important}}'
            '@media (max-width:620px){.sp-4,.sp-steps,.sp-3{grid-template-columns:minmax(0,1fr)!important}}@media (max-width:700px){.fx{margin-left:0!important;flex-direction:column;gap:12px!important}.fx>div{padding:0!important;border-left:0!important}}.fx>div:first-child{border-left:0!important}'
            '.sp-q summary::-webkit-details-marker{display:none}.sp-q[open] .sp-plus{transform:rotate(45deg);background:#5ED3A2;color:#0E3B2B!important}.ocard{transition:border-color .2s}.ocard:hover{border-color:#5ED3A2!important}</style>')
-    body = what + '\n' + plan + '\n' + designs + '\n' + price + '\n' + process + '\n' + qs + '\n' + others + '\n' + css
+    body = what + '\n' + plan + '\n' + designs + '\n' + price + '\n' + process + '\n' + qs + '\n' + others + '\n' + css + home_css(SHARED)
     write(f"stands/{S['slug']}/index.html", h + '\n' + hero + '\n' + body + '\n' + tail(quote))
 
 # ---------------------------------------------------------------- quote page
