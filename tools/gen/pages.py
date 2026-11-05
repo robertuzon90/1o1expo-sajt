@@ -82,7 +82,7 @@ def body_html(toc, sections, extra=''):
 <article style="display: flex; flex-direction: column; gap: 32px; font-size: 18px; line-height: 1.7; max-width: 760px">
 ''' + '\n'.join(sections) + f'''
 </article></div></section>{extra}
-<style>@media (max-width:960px){{.fh{{grid-template-columns:minmax(0,1fr)!important}}.fh-img{{display:none!important}}}}@media (max-width:900px){{.art{{grid-template-columns:minmax(0,1fr)!important;gap:24px!important}}.toc{{position:static!important}}}}@media (max-width:700px){{.pc2,.cg2{{grid-template-columns:1fr!important}}.pc2-r{{border-left:0!important;padding-left:0!important;border-top:1px solid #D8D1C5}}.fx{{margin-left:0!important;flex-direction:column;gap:12px!important}}.fx>div{{padding:0!important;border-left:0!important}}}}.ocard{{transition:border-color .2s}}.ocard:hover{{border-color:#5ED3A2!important}}</style>''')
+<style>@media (max-width:960px){{.fh{{grid-template-columns:minmax(0,1fr)!important}}.fh-img{{display:none!important}}}}@media (max-width:900px){{.art{{grid-template-columns:minmax(0,1fr)!important;gap:24px!important}}.toc{{position:static!important}}}}@media (max-width:700px){{.pc2,.cg2{{grid-template-columns:1fr!important}}.pc2-r{{border-left:0!important;padding-left:0!important;border-top:1px solid #D8D1C5}}.fx{{margin-left:0!important;flex-direction:column;gap:12px!important}}.fx>div{{padding:0!important;border-left:0!important}}}}.fx>div:first-child{{border-left:0!important}}.ocard{{transition:border-color .2s}}.ocard:hover{{border-color:#5ED3A2!important}}</style>''')
 
 # ---------------------------------------------------------------- stand types
 STANDS = [
@@ -204,7 +204,7 @@ def stand(S):
               f'<div class="sp-3" style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px">{oc}</div></section>')
     css = ('<style>@media (max-width:960px){.fh{grid-template-columns:minmax(0,1fr)!important}.fh-img{display:none!important}}'
            '@media (max-width:900px){.sp-2{grid-template-columns:minmax(0,1fr)!important}.sp-steps{grid-template-columns:repeat(2,minmax(0,1fr))!important}.sp-line{display:none}.sp-3{grid-template-columns:repeat(2,minmax(0,1fr))!important}}'
-           '@media (max-width:620px){.sp-4,.sp-steps,.sp-3{grid-template-columns:minmax(0,1fr)!important}}@media (max-width:700px){.fx{margin-left:0!important;flex-direction:column;gap:12px!important}.fx>div{padding:0!important;border-left:0!important}}'
+           '@media (max-width:620px){.sp-4,.sp-steps,.sp-3{grid-template-columns:minmax(0,1fr)!important}}@media (max-width:700px){.fx{margin-left:0!important;flex-direction:column;gap:12px!important}.fx>div{padding:0!important;border-left:0!important}}.fx>div:first-child{border-left:0!important}'
            '.sp-q summary::-webkit-details-marker{display:none}.sp-q[open] .sp-plus{transform:rotate(45deg);background:#5ED3A2;color:#0E3B2B!important}.ocard{transition:border-color .2s}.ocard:hover{border-color:#5ED3A2!important}</style>')
     body = what + '\n' + plan + '\n' + designs + '\n' + price + '\n' + process + '\n' + qs + '\n' + others + '\n' + css
     write(f"stands/{S['slug']}/index.html", h + '\n' + hero + '\n' + body + '\n' + tail(quote))

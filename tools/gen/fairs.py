@@ -196,7 +196,7 @@ def render(F):
 {price}
 {faqh}
 </article></div></section>
-<style>@media (max-width:960px){{.fh{{grid-template-columns:minmax(0,1fr)!important}}.fh-img{{display:none}}}}@media (max-width:900px){{.art{{grid-template-columns:minmax(0,1fr)!important;gap:24px!important}}.toc{{position:static!important}}}}@media (max-width:700px){{.pc2{{grid-template-columns:1fr!important}}.pc2-r{{border-left:0!important;padding-left:0!important;border-top:1px solid #D8D1C5}}.fx{{margin-left:0!important;flex-direction:column;gap:12px!important}}.fx>div{{padding:0!important;border-left:0!important}}}}</style>'''
+<style>@media (max-width:960px){{.fh{{grid-template-columns:minmax(0,1fr)!important}}.fh-img{{display:none}}}}@media (max-width:900px){{.art{{grid-template-columns:minmax(0,1fr)!important;gap:24px!important}}.toc{{position:static!important}}}}@media (max-width:700px){{.pc2{{grid-template-columns:1fr!important}}.pc2-r{{border-left:0!important;padding-left:0!important;border-top:1px solid #D8D1C5}}.fx{{margin-left:0!important;flex-direction:column;gap:12px!important}}.fx>div{{padding:0!important;border-left:0!important}}}}.fx>div:first-child{{border-left:0!important}}</style>'''
     od = OUTDIR or F['slug']
     os.makedirs(SITE + f"fairs/{od}", exist_ok=True)
     open(SITE + f"fairs/{od}/index.html", 'w').write(h + '\n' + hero + '\n' + body + '\n' + tail(quote))
