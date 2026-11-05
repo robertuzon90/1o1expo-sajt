@@ -17,7 +17,7 @@ Paths in the scripts point to /home/claude/... – adjust `SITE` and the json pa
 ## Stand, quote and own-design pages (`tools/gen/pages.py`)
 `pages.py` builds `/stands/<type>/`, `/quote/` and `/own-design/` from the header and footer of `guides/stand-cost/`. `tools/de/navstands.py` adds the Stand types dropdown to the header nav and points the footer stand links at the stand pages. German text for these pages is in `tr_extra.json`, `attr.json` and `meta.json` (source list: `tr_new.py`).
 
-Order after a header or footer change: `navdd.py`, `navstands.py`, `gen/fairs.py`, `gen/pages.py`, `gen/notfound.py`, then `eyebrow.py` (marker style for section labels) and `wapill.py` (floating WhatsApp button), then the German build, `link_lang.py` and `sitemap.py`.
+Order after a header or footer change: `navdd.py`, `navstands.py`, `footer.py`, `gen/fairs.py`, `gen/pages.py`, `gen/notfound.py`, then `footer.py` (site footer), `eyebrow.py` (marker style for section labels) and `wapill.py` (floating WhatsApp button), then the German build, `link_lang.py` and `sitemap.py`.
 
 ## Fair pages and 404 (`tools/gen/`)
 `fairs.py` builds `/fairs/` and the ten fair pages, `notfound.py` builds `404.html`. Run `navdd.py`, then the German build and `link_lang.py` afterwards.

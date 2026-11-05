@@ -9,7 +9,10 @@ CSS = ('<style id="eyb-css">.eyb{color:#1C1A17!important;background:linear-gradi
 SPAN = re.compile(r'<span(?: class="(tag|eyb|eyb-d|eyb-w)")? style="([^"]*font-size: ?12px[^"]*color: ?#(1F845B|5ED3A2)[^"]*)">([^<]{2,80})</span>(?!\s*<b )', re.I)
 def run(path):
     s = open(path).read(); o = s
+    fi = s.find('<footer'); tail = s[fi:] if fi >= 0 else ''; s = s[:fi] if fi >= 0 else s
     s = SPAN.sub(lambda m: f'<span class="{"eyb-w" if m.group(1) == "eyb-w" else ("eyb" if m.group(3).upper() == "1F845B" else "eyb-d")}" style="{m.group(2)}">{m.group(4)}</span>', s)
+    tail = re.sub(r'<span class="eyb(?:-d|-w)?" (style="[^"]*">(?:STANDS|COMPANY|CONTACT)</span>)', r'<span \1', tail)
+    s = s + tail
     if 'class="eyb' in s or 'hero-photo' in s:
         s = re.sub(r'<style id="eyb-css">.*?</style>\n?', '', s, flags=re.S)
         s = s.replace('</body>', CSS + '\n</body>', 1)
