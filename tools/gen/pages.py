@@ -87,10 +87,11 @@ def body_html(toc, sections, extra=''):
 # ---------------------------------------------------------------- stand types
 STANDS = [
  dict(slug='row', alt='Row stand in the middle of a row, closed on three sides and open to the aisle', name='Row stand', plural='Row stands', art='a row stand', open=1, sides='1 open side', best='Graphics and storage', rent='Base rate',
-      what="Your stand sits in a row between neighbours, with walls on the back and both sides and one side open to the aisle. It is the most common stand type at most trade&nbsp;fairs.",
+      what="A row stand stands between two neighbours: closed at the back and on both sides, open to one aisle. It is the most common stand type at most trade&nbsp;fairs.",
       lead='Walls on three sides, one side open to the aisle. We design and build your row stand at any trade fair in Europe, for one all-inclusive&nbsp;price.',
       good=['Usually the lowest space rent per m²', 'Lots of wall space for graphics, screens and shelving', 'Easy to add a small storage room'],
       watch=['Visitors can only reach you from one aisle', 'Less visible from a distance, so your back wall has to work hard'],
+      fit='A row stand suits you if most of your message fits on one strong back wall and you want to keep the space rent low. It is less suited to large products that people need to walk around, or to many meetings at&nbsp;once.',
       bestfor='Exhibitors with a smaller budget, a clear product range and a strong brand&nbsp;wall.',
       tips=['<b>Make the back wall work from the aisle.</b> Visitors see you from one side only, so your logo and one clear message go high on the back wall, within the organiser\'s height limit.',
             '<b>Keep the front open.</b> A counter or table set back from the aisle edge invites people in instead of blocking the way.',
@@ -103,41 +104,43 @@ STANDS = [
       lead='Open on two sides, so visitors reach you from two aisles. We design and build your corner stand at any trade fair in Europe, for one all-inclusive&nbsp;price.',
       good=['Visitors reach you from two aisles', 'More visibility than a row stand for a modest step up in space rent', 'Still has two walls for graphics and storage'],
       watch=['Both open sides need to invite people in, so the layout takes more planning', 'Many organisers charge a supplement for corner space'],
+      fit='A corner stand suits you if you want visitors from two aisles without paying for a peninsula or island. The layout has to welcome people from both sides, so it takes a little more planning than a row&nbsp;stand.',
       bestfor='Exhibitors who want more foot traffic without the space rent of a peninsula or&nbsp;island.',
       tips=['<b>Two ways in.</b> Both aisles should lead onto the stand, so we keep high walls and counters away from the open sides.',
             '<b>Brand where the walls meet.</b> The closed corner is seen from both aisles, which makes it the natural place for your logo and main message.',
             '<b>A clear route through.</b> Whichever aisle visitors come from, they should see where to go: a product, a screen or someone to talk to.',
             '<b>Storage in the back corner.</b> The closed corner also takes a small storage room without blocking either open side.'],
-      faq=[('Is a corner stand worth the extra space rent?', 'Often, yes. The corner supplement is usually a modest share of the space rent, and a second aisle can bring noticeably more visitors past your stand. If your stand is mainly a brand wall with a small counter, a <a href="../row/">row stand</a> can be&nbsp;enough.'),
-           ('Where should the counter go on a corner stand?', 'Usually not right on the corner. A counter there blocks both entrances. We place it so visitors can step onto the stand from either aisle first, and then find someone to talk&nbsp;to.')]),
+      faq=[('Where should the counter go on a corner stand?', 'Usually not right on the corner. A counter there blocks both entrances. We place it so visitors can step onto the stand from either aisle first, and then find someone to talk&nbsp;to.'),
+           ('Can a corner stand have a storage room?', 'Yes. The closed corner, where the two walls meet, takes a small lockable room without blocking either open&nbsp;side.')]),
  dict(slug='peninsula', alt='Peninsula stand with one back wall, open on three sides', name='Peninsula stand', plural='Peninsula stands', art='a peninsula stand', open=3, sides='3 open sides', best='A strong brand wall', rent='Higher again',
       what="Your stand sits at the head of a row, with one back wall and three sides open, so visitors come from three&nbsp;directions.",
       lead='Open on three sides with one strong back wall. We design and build your peninsula stand at any trade fair in Europe, for one all-inclusive&nbsp;price.',
       good=['Very visible, with visitors coming from three directions', 'One strong back wall for your brand and a storage room', 'Room for product displays, a meeting area and a reception desk'],
       watch=["The back wall is shared with the neighbour behind you, so its height and finish follow the organiser's rules", 'The layout has to work from three directions'],
+      fit="A peninsula stand suits you if you want to be seen from three directions and still keep one wall for your brand and storage. That wall faces a neighbour, so the organiser's rules for it come&nbsp;first.",
       bestfor='Mid-size and larger exhibitors who want presence and a clear brand&nbsp;wall.',
       tips=["<b>One back wall that carries the brand.</b> It is seen from far down the aisle in front of it, so it holds your logo and one clear message.",
             "<b>Check the back wall rules first.</b> The neighbour behind you shares the wall, so its height and finish follow the organiser's rules. We check them before we design.",
             '<b>A reason to step in from each side.</b> Products, screens and the reception are placed so all three open sides invite people in.',
             '<b>Meetings and storage at the back.</b> A meeting area or a small room along the back wall stays out of the main flow of visitors.'],
-      faq=[('Can a peninsula stand be double-deck?', "Sometimes. It depends on the hall and the organiser's rules. A double-deck stand needs approval and structural calculations, some fairs set a minimum stand size, and the upper floor may be charged as extra space. <a href=\"../island/\">Island stands</a> are the most common choice for a&nbsp;double-deck."),
+      faq=[('Can a peninsula stand have a meeting room?', 'Yes, usually along the back wall, where it stays out of the main flow of visitors. How big it can be depends on your stand&nbsp;size.'),
            ('Who decides how high the back wall can be?', "The organiser. The technical guidelines of each fair set the maximum height and how the side facing your neighbour must be finished. Send us the guidelines with your brief, or tell us the fair and we look them&nbsp;up.")]),
  dict(slug='island', alt='Island stand seen from above, open on all four sides', name='Island stand', plural='Island stands', art='an island stand', open=4, sides='4 open sides', best='Maximum visibility', rent='Usually the highest',
-      what="A free-standing stand, open on all four sides, with no direct neighbours. It is seen from every aisle and has the biggest presence in the&nbsp;hall.",
+      what="An island stand stands on its own, with aisles on all four sides and no neighbour touching it. It is seen from every aisle and has the biggest presence in the&nbsp;hall.",
       lead='Open on all four sides and seen from every aisle. We design and build your island stand at any trade fair in Europe, for one all-inclusive&nbsp;price.',
       good=['The biggest presence in the hall, visible from every aisle', 'Full freedom in the layout, including closed meeting rooms', 'Can be built as a double-deck stand where the hall allows it'],
       watch=['The most complex to plan, and usually the highest space rent per m²', 'Height limits, hanging points and double-deck structures need organiser approval and often structural calculations'],
+      fit='An island stand suits you if you want the strongest presence in the hall, with room for meetings, demos or hospitality. It is the most complex to plan, and approvals for height, hanging points or a second floor come&nbsp;first.',
       bestfor='Larger exhibitors who want the strongest presence and room for meetings, demos and&nbsp;hospitality.',
       tips=['<b>No back side.</b> Visitors walk all the way around, so every side has to look finished and give people a reason to stop.',
             '<b>Seen from across the hall.</b> A hanging sign or a tall element shows where you are from far away. Hanging points need the organiser\'s approval, so we plan them early.',
             '<b>Rooms in the middle.</b> Meeting rooms and storage in the core of the stand keep the outer edges open to the aisles.',
             '<b>Approvals first.</b> Height, hanging points and double-deck structures need organiser approval and often structural calculations, so they come first in the schedule.'],
-      faq=[('Can an island stand be double-deck?', "Often, where the hall and the organiser allow it. A double-deck stand needs approval and structural calculations, some fairs set a minimum stand size, and the upper floor may be charged as extra space. We check this for your fair before we&nbsp;design."),
+      faq=[('Can an island stand have a second floor?', "It can, if the hall and the organiser allow it. For a second floor the organiser asks for approval and structural calculations, and some fairs charge the upper floor as extra space. We check your fair's rules before we start the&nbsp;design."),
            ('Who handles the organiser approvals?', "You book the space and the organiser's services. We help you with the technical forms for the stand itself, such as the stand drawings the organiser asks for. For hanging points and double-deck structures, these are part of our&nbsp;planning.")]),
 ]
 COMMON_FAQ = [
-    ('Does the stand type change your price?', 'Not by itself. Our price depends on the size, design, materials and finish of your stand. The stand type changes the space rent you pay to the&nbsp;organiser.'),
-    ('Can we change the stand type after booking?', 'Only through the organiser. Corner, peninsula and island spaces are limited and usually go first, so ask early. If you already have your space, we design for the open sides you&nbsp;have.'),
+    ('What do you need from us to start?', 'The fair, your stand size and the open sides, plus your email. A phone photo of the floor plan helps. Anything missing we sort out&nbsp;together.'),
     ('Do we pay anything before we approve the design?', 'No. Your design and your price are free and come with no obligation. You only commit once you have seen both and said&nbsp;yes.'),
 ]
 TYPE_OPT = {'row': 'Row stand (1 open side)', 'corner': 'Corner stand (2 open sides)', 'peninsula': 'Peninsula stand (3 open sides)', 'island': 'Island stand (4 open sides)'}
@@ -160,8 +163,8 @@ def stand(S):
     what = (H2('what', f"What {S['art']} is", first=True) + P + S['what'] + '</p>'
             + f'<figure style="margin: 0; display: flex; flex-direction: column; gap: 10px"><img src="../../img/stand-type-{S["slug"]}.jpg" alt="{S["alt"]}" width="1000" height="747" loading="lazy" style="display: block; width: 100%; height: auto; border: 1px solid #D8D1C5"><figcaption style="font-size: 14px; color: #5B5650">{S["name"]}: {S["sides"]}. The organiser sets the open sides when you book your&nbsp;space.</figcaption></figure>'
             + '<p style="margin: 0; padding: 16px 20px; background: #DDF4EA; border: 1.5px solid #1C1A17; font-size: 17px">Not sure which type you booked? Send us your space confirmation or the floor plan with your brief and we check it. <a href="../../quote/" style="color: #13704D; font-weight: 600; white-space: nowrap">Send your floor plan&nbsp;→</a></p></section>')
-    fit = (H2('fit', f"Is {S['art']} right for you?") + f'<div class="pc2" style="display: grid; grid-template-columns: 1fr 1fr; border-top: 1.5px solid #1C1A17; border-bottom: 1px solid #D8D1C5"><div style="padding: 18px 24px 20px 0"><span style="display: block; font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #13704D; margin-bottom: 10px">WHAT WORKS WELL</span>{ul(S["good"], TICK, "; font-size: 17px; line-height: 1.6")}</div><div class="pc2-r" style="padding: 18px 0 20px 24px; border-left: 1px solid #D8D1C5"><span style="display: block; font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #8A6A1E; margin-bottom: 10px">WHAT TO WATCH</span>{ul(S["watch"], WARN, "; font-size: 17px; line-height: 1.6")}</div></div>'
-           + P + f'<b>Best for:</b> {S["bestfor"]} Compare all four in our guide to <a href="../../guides/stand-types/">stand types</a>.</p></section>')
+    fit = (H2('fit', f"Is {S['art']} right for you?") + P + S['fit'] + '</p>'
+           + P + 'Compare all four types side by side, including how the space rent changes, in our guide to <a href="../../guides/stand-types/">stand types</a>.</p></section>')
     plan = H2('plan', f"What we plan for on {S['art']}") + P + 'A few things we plan for on almost every stand of this&nbsp;type:</p>' + ul(S['tips']) + '</section>'
     imgs = ''.join(f'<figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><img src="../../img/concept-{S["slug"]}-{i}.jpg" alt="Concept visualisation of {S["art"]}, design {i}" width="1200" height="900" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid #D8D1C5"><figcaption style="font-size: 14px; color: #5B5650">Concept visualisation</figcaption></figure>' for i in (1, 2))
     designs = H2('designs', 'Concept designs') + P + 'Two concepts for this stand type. Yours is drawn from scratch for your hall, your size and your open&nbsp;sides.</p>' + f'<div class="cg2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">{imgs}</div></section>'
