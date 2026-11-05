@@ -8,7 +8,11 @@ CSS = ('<style id="wa-pill-css">.wa-pill{width:auto!important;height:auto!import
        '.wa-pill .wa-ph svg{position:absolute;right:-5px;bottom:-5px;width:20px!important;height:20px!important;padding:2px;background:#5ED3A2;border-radius:50%;box-sizing:border-box}'
        '.wa-t{display:flex;flex-direction:column;line-height:1.2;color:#12100E;font-family:"DM Sans",sans-serif;white-space:nowrap}.wa-t b{font-size:15px;font-weight:600}.wa-t span{font-size:13px}'
        '.wa-pill .wa-tip{display:none}.wa-pill:hover,.wa-pill:focus-visible{transform:translateY(-2px)!important}'
-       '@media (max-width:700px){.wa-pill{right:16px!important;bottom:16px!important}.foot-legal{padding-bottom:72px}}</style>')
+       '@media (max-width:700px){.wa-pill{right:16px!important;bottom:16px!important}.foot-legal{padding-bottom:72px}}'
+       '.wa-pill{opacity:0;visibility:hidden;transform:translateY(16px)!important;transition:opacity .25s,transform .25s,visibility .25s!important}'
+       '.wa-pill.wa-on{opacity:1;visibility:visible;transform:none!important}.wa-pill.wa-on:hover,.wa-pill.wa-on:focus-visible{transform:translateY(-2px)!important}'
+       '@media (prefers-reduced-motion:reduce){.wa-pill{transition:none!important}}</style>'
+       '<script id="wa-pill-js">(function(){var b=document.querySelector(".wa-pill");if(!b)return;function u(){b.classList.toggle("wa-on",scrollY>innerHeight*0.5)}addEventListener("scroll",u,{passive:true});addEventListener("resize",u);u()})();</script>')
 A = re.compile(r'<a href="([^"]*)" class="wa-link wa-float(?: wa-pill)?" aria-label="[^"]*">(.*?)</a>', re.S)
 def run(path, de=False):
     s = open(path).read(); o = s
@@ -19,7 +23,7 @@ def run(path, de=False):
     new = (f'<a href="{m.group(1)}" class="wa-link wa-float wa-pill" aria-label="{al}"><span class="wa-ph"><img src="/img/founder.jpg" alt="" width="42" height="42">{svg}</span>'
            f'<span class="wa-t" aria-hidden="true"><b>{t1}</b><span>{t2}</span></span></a>')
     s = s[:m.start()] + new + s[m.end():]
-    s = re.sub(r'<style id="wa-pill-css">.*?</style>\n?', '', s, flags=re.S)
+    s = re.sub(r'<style id="wa-pill-css">.*?</style>(<script id="wa-pill-js">.*?</script>)?\n?', '', s, flags=re.S)
     s = s.replace('</body>', CSS + '\n</body>', 1)
     if s != o: open(path, 'w').write(s)
     return s != o
