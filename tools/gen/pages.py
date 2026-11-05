@@ -93,12 +93,12 @@ def toc_html(items):
     return '<nav class="toc" aria-label="On this page" style="position: sticky; top: 24px; display: flex; flex-direction: column; font-size: 15px"><span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5B5650; padding-bottom: 8px">ON THIS&nbsp;PAGE</span>' + ''.join(f'<a href="#{i}" style="color: #1C1A17; text-decoration: none; padding: 6px 0; border-bottom: 1px solid #E6E0D6">{t}</a>' for i, t in items) + '</nav>'
 
 def hero_side(crumb, eyebrow, h1, lead, facts, cta_href, cta_text, img, alt, note='Free and without obligation.', caption=''):
+    eb = f'<span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2; margin-bottom: -2px">{eyebrow}</span>\n' if eyebrow else ''
     fx = ''.join(f'<div style="display: flex; flex-direction: column; gap: 4px; padding: 0 28px; border-left: 1px solid rgba(255,255,255,.22)"><span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2">{k.upper()}</span><b style="font-size: 18px; font-weight: 600">{v}</b></div>' for k, v in facts)
     return f'''</header><section style="background: #0E3B2B; color: #FFFFFF"><div class="fh" style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 56px; display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: 48px; align-items: center"><div style="display: flex; flex-direction: column; gap: 22px">
 <nav aria-label="Breadcrumb" style="font-size: 15px; color: rgba(255,255,255,.7)">{crumb}</nav>
-<span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2; margin-bottom: -2px">{eyebrow}</span>
-<h1 style="margin: 0; max-width: 18em; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">{h1}</h1>
-<p style="margin: 0; max-width: 38em; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,.85)">{lead}</p>
+{eb}<h1 style="margin: 0; max-width: 11em; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">{h1}</h1>
+<p style="margin: 0; max-width: 30em; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,.85)">{lead}</p>
 <div class="fx" style="display: flex; flex-wrap: wrap; gap: 16px 0; margin: 6px 0 0 -28px">{fx}</div>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 10px"><a href="{cta_href}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 24px; background: #5ED3A2; color: #12100E; font-weight: 600; font-size: 17px; text-decoration: none">{cta_text} <span aria-hidden="true">→</span></a><span style="font-size: 15px; color: rgba(255,255,255,.7)">{note}</span></div>
 </div><figure class="fh-img" style="margin: 0; position: relative; display: flex; flex-direction: column; gap: 10px"><img src="{img}" alt="{alt}" width="1200" height="900" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3.4; object-fit: cover; box-shadow: 0 24px 48px rgba(0,0,0,.28)">{(f'<figcaption style="font-size: 13px; color: rgba(255,255,255,.65)">{caption}</figcaption>' if caption else '')}</figure></div></section>'''
@@ -115,7 +115,7 @@ def body_html(toc, sections, extra=''):
 STANDS = [
  dict(slug='row', alt='Row stand in the middle of a row, closed on three sides and open to the aisle', name='Row stand', plural='Row stands', art='a row stand', open=1, sides='1 open side', best='Graphics and storage', rent='Base rate',
       what="A row stand stands between two neighbours: closed at the back and on both sides, open to one aisle. It is the most common stand type at most trade&nbsp;fairs.",
-      lead='Walls on three sides, one side open to the aisle. We design and build your row stand at any trade fair in Europe, for one all-inclusive&nbsp;price.',
+      lead='We design and build your row stand at any trade fair in Europe, for one all-inclusive price. A first design for your space comes within 7 working&nbsp;days.',
       good=['Usually the lowest space rent per m²', 'Lots of wall space for graphics, screens and shelving', 'Easy to add a small storage room'],
       watch=['Visitors can only reach you from one aisle', 'Less visible from a distance, so your back wall has to work hard'],
       fit='A row stand suits you if most of your message fits on one strong back wall and you want to keep the space rent low. It is less suited to large products that people need to walk around, or to many meetings at&nbsp;once.',
@@ -128,7 +128,7 @@ STANDS = [
            ('Can a row stand have a storage room?', 'Yes. A small lockable room behind the back wall or along a side wall is easy to add on a row stand, as long as the stand is big enough to keep a welcoming&nbsp;front.')]),
  dict(slug='corner', alt='Corner stand with two walls, open to two aisles', name='Corner stand', plural='Corner stands', art='a corner stand', open=2, sides='2 open sides', best='Two-way visibility', rent='Often higher',
       what="Your stand sits at the end of a row, with two walls and two sides open to the aisles, so two streams of visitors pass&nbsp;it.",
-      lead='Open on two sides, so visitors reach you from two aisles. We design and build your corner stand at any trade fair in Europe, for one all-inclusive&nbsp;price.',
+      lead='We design and build your corner stand at any trade fair in Europe, for one all-inclusive price. A first design for your space comes within 7 working&nbsp;days.',
       good=['Visitors reach you from two aisles', 'More visibility than a row stand for a modest step up in space rent', 'Still has two walls for graphics and storage'],
       watch=['Both open sides need to invite people in, so the layout takes more planning', 'Many organisers charge a supplement for corner space'],
       fit='A corner stand suits you if you want visitors from two aisles without paying for a peninsula or island. The layout has to welcome people from both sides, so it takes a little more planning than a row&nbsp;stand.',
@@ -141,7 +141,7 @@ STANDS = [
            ('Can a corner stand have a storage room?', 'Yes. The closed corner, where the two walls meet, takes a small lockable room without blocking either open&nbsp;side.')]),
  dict(slug='peninsula', alt='Peninsula stand with one back wall, open on three sides', name='Peninsula stand', plural='Peninsula stands', art='a peninsula stand', open=3, sides='3 open sides', best='A strong brand wall', rent='Higher again',
       what="Your stand sits at the head of a row, with one back wall and three sides open, so visitors come from three&nbsp;directions.",
-      lead='Open on three sides with one strong back wall. We design and build your peninsula stand at any trade fair in Europe, for one all-inclusive&nbsp;price.',
+      lead='We design and build your peninsula stand at any trade fair in Europe, for one all-inclusive price. A first design for your space comes within 7 working&nbsp;days.',
       good=['Very visible, with visitors coming from three directions', 'One strong back wall for your brand and a storage room', 'Room for product displays, a meeting area and a reception desk'],
       watch=["The back wall is shared with the neighbour behind you, so its height and finish follow the organiser's rules", 'The layout has to work from three directions'],
       fit="A peninsula stand suits you if you want to be seen from three directions and still keep one wall for your brand and storage. That wall faces a neighbour, so the organiser's rules for it come&nbsp;first.",
@@ -154,7 +154,7 @@ STANDS = [
            ('Who decides how high the back wall can be?', "The organiser. The technical guidelines of each fair set the maximum height and how the side facing your neighbour must be finished. Send us the guidelines with your brief, or tell us the fair and we look them&nbsp;up.")]),
  dict(slug='island', alt='Island stand seen from above, open on all four sides', name='Island stand', plural='Island stands', art='an island stand', open=4, sides='4 open sides', best='Maximum visibility', rent='Usually the highest',
       what="An island stand stands on its own, with aisles on all four sides and no neighbour touching it. It is seen from every aisle and has the biggest presence in the&nbsp;hall.",
-      lead='Open on all four sides and seen from every aisle. We design and build your island stand at any trade fair in Europe, for one all-inclusive&nbsp;price.',
+      lead='We design and build your island stand at any trade fair in Europe, for one all-inclusive price. A first design for your space comes within 7 working&nbsp;days.',
       good=['The biggest presence in the hall, visible from every aisle', 'Full freedom in the layout, including closed meeting rooms', 'Can be built as a double-deck stand where the hall allows it'],
       watch=['The most complex to plan, and usually the highest space rent per m²', 'Height limits, hanging points and double-deck structures need organiser approval and often structural calculations'],
       fit='An island stand suits you if you want the strongest presence in the hall, with room for meetings, demos or hospitality. It is the most complex to plan, and approvals for height, hanging points or a second floor come&nbsp;first.',
@@ -182,8 +182,8 @@ def stand(S):
     h = h.replace('<meta property="og:image:height" content="630">', '<meta property="og:image:height" content="900">')
     h = ld([crumbs([('1o1 expo', 'https://1o1expo.com/'), ('Stand types', 'https://1o1expo.com/#stands'), (S['plural'], url)]), faq_ld(faq)], h)
     h = h.replace('<a href="../../index.html#stands" style="color: #1C1A17; text-decoration: none">Stand types</a>', '<a href="../../index.html#stands" aria-current="page" style="color: #13704D; text-decoration: none; font-weight: 600">Stand types</a>')
-    crumb = f'<a href="../../index.html#stands" style="color: #5ED3A2; text-decoration: none; font-weight: 600">Stand types</a> <span aria-hidden="true">/</span> {S["plural"]}'
-    hero = hero_side(crumb, S['sides'].upper(), f"{S['plural']} for trade fairs in&nbsp;Europe", S['lead'],
+    crumb = f'<a href="../../index.html#stands" style="color: #5ED3A2; text-decoration: none; font-weight: 600"><span aria-hidden="true">←</span> Stand types</a> <span aria-hidden="true">/</span> {S["plural"]}'
+    hero = hero_side(crumb, '', f"{S['plural']} for trade fairs in&nbsp;Europe", S['lead'],
                      [('Open sides', str(S['open'])), ('Best for', S['best']), ('Space rent', S['rent'])],
                      quote, f"Get a quote for {S['art']}", f"../../img/concept-{S['slug']}-1.jpg", f"Concept visualisation of {S['art']}")
     W = 'max-width: 1240px; margin: 0 auto; padding-left: 24px; padding-right: 24px'
@@ -298,7 +298,7 @@ def own_design():
     h = h.replace('<meta property="og:image:height" content="630">', '<meta property="og:image:height" content="900">')
     h = ld([crumbs([('1o1 expo', 'https://1o1expo.com/'), ('Your own design', url)]), faq_ld(faq)], h)
     h = h.replace('href="../../', 'href="../').replace('src="../../', 'src="../')
-    crumb = '<a href="../index.html" style="color: #5ED3A2; text-decoration: none; font-weight: 600">1o1&nbsp;expo</a> <span aria-hidden="true">/</span> Your own design'
+    crumb = '<a href="../index.html" style="color: #5ED3A2; text-decoration: none; font-weight: 600"><span aria-hidden="true">←</span> 1o1&nbsp;expo</a> <span aria-hidden="true">/</span> Your own design'
     hero = hero_side(crumb, 'YOU HAVE THE DESIGN · WE BUILD IT', 'Already have a stand design? We build&nbsp;it.',
                      'Send us your drawings or renders, or the design from your last fair. You get one price to build it: production, transport, build-up and dismantling, at any trade fair in&nbsp;Europe.',
                      [('You send', 'Drawings or renders'), ('You get', 'One price to build it'), ('Before you pay', 'Nothing produced')],
