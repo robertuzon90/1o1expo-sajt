@@ -36,7 +36,8 @@ for b in blocks:
     name = next((k for k in labs if f'aria-label="{k}' in blk), None)
     if not name: continue
     anc, lab = labs[name]
-    nb = re.sub(r'^<a href="[^"]*"', f'<a href="/de/ratgeber/standtypen/#{anc}"', blk)
+    DE_SLUG = {'row': 'reihenstand', 'corner': 'eckstand', 'peninsula': 'kopfstand', 'island': 'inselstand'}
+    nb = re.sub(r'^<a href="[^"]*"', f'<a href="/de/messestand/{DE_SLUG[anc]}/"', blk)
     nb = re.sub(r'(Passt dieser Typ zu Ihnen\?|[A-ZÄÖÜa-zäöü]+ im Detail)&nbsp;→', lab + '&nbsp;→', nb)
     s = s.replace(blk, nb, 1)
 # "See trade fair pages" line under the fairs intro
@@ -47,5 +48,8 @@ if old in s:
 i = s.find('<footer')
 if i > 0 and '/de/messen/" style="color: #1C1A17; text-decoration: none">Messen</a></div>' not in s[i:]:
     s = s[:i] + re.sub(r'(<a href="/de/ratgeber/" style="color: #1C1A17; text-decoration: none">Ratgeber</a>)(</div>)', r'\1<a href="/de/messen/" style="color: #1C1A17; text-decoration: none">Messen</a>\2', s[i:], count=1)
+s = re.sub(r'href="#quote"( style="[^"]*">Design senden)', r'href="/de/eigenes-design/"\1', s)
+for _e, _d in (('row', 'reihenstand'), ('corner', 'eckstand'), ('peninsula', 'kopfstand'), ('island', 'inselstand')):
+    s = s.replace(f'href="/de/ratgeber/standtypen/#{_e}" class="stype"', f'href="/de/messestand/{_d}/" class="stype"')
 open(f, 'w').write(s)
 print('ok')

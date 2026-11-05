@@ -14,6 +14,11 @@ After changing English text on a translated page:
 
 Paths in the scripts point to /home/claude/... – adjust `SITE` and the json paths if run elsewhere.
 
+## Stand, quote and own-design pages (`tools/gen/pages.py`)
+`pages.py` builds `/stands/<type>/`, `/quote/` and `/own-design/` from the header and footer of `guides/stand-cost/`. `tools/de/navstands.py` adds the Stand types dropdown to the header nav and points the footer stand links at the stand pages. German text for these pages is in `tr_extra.json`, `attr.json` and `meta.json` (source list: `tr_new.py`).
+
+Order after a header or footer change: `navdd.py`, `navstands.py`, `gen/fairs.py`, `gen/pages.py`, then the German build, `link_lang.py` and `sitemap.py`.
+
 ## Fair pages and 404 (`tools/gen/`)
 `fairs.py` builds `/fairs/` and the ten fair pages, `notfound.py` builds `404.html`. Run `navdd.py`, then the German build and `link_lang.py` afterwards.
 When a fair is added, also add it to the list in `tools/de/navdd.py`.

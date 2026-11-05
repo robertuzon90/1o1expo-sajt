@@ -127,14 +127,14 @@ def head(title, desc, url, depth_current_fairs=True):
     return h
 
 def tail(quote):
-    t = TAIL0.replace('href="../../index.html#quote" style="display: inline-flex', f'href="{quote}" style="display: inline-flex', 1)
+    t = TAIL0.replace('href="../../quote/" style="display: inline-flex', f'href="{quote}" style="display: inline-flex', 1)
     return t.replace('href="../"', 'href="../../guides/"')
 
 def ld(objs, h): return h.replace('</head>', ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in objs) + '</head>')
 
 def render(F):
     yr = '2027'
-    quote = '../../index.html?fair=' + urllib.parse.quote(f"{F['full']} {yr}") + '#quote'
+    quote = '../../quote/?fair=' + urllib.parse.quote(f"{F['full']} {yr}")
     title = f"Exhibition stands for {F['full']} {yr}"
     desc = f"Custom exhibition stands for {F['full']} {yr} ({F['dshort']}, {F['venue']}): design, production, transport, build-up and dismantling in one all-inclusive price."
     url = f"https://1o1expo.com/fairs/{F['slug']}/"
@@ -196,7 +196,7 @@ def render(F):
 {price}
 {faqh}
 </article></div></section>
-<style>@media (max-width:960px){{.fh{{grid-template-columns:minmax(0,1fr)!important}}.fh-img{{display:none}}}}@media (max-width:900px){{.art{{grid-template-columns:minmax(0,1fr)!important;gap:24px!important}}.toc{{position:static!important}}}}@media (max-width:700px){{.pc2{{grid-template-columns:1fr!important}}.pc2-r{{border-left:0!important;padding-left:0!important;border-top:1px solid #D8D1C5}}.fx>div{{padding:0 18px!important}}}}</style>'''
+<style>@media (max-width:960px){{.fh{{grid-template-columns:minmax(0,1fr)!important}}.fh-img{{display:none}}}}@media (max-width:900px){{.art{{grid-template-columns:minmax(0,1fr)!important;gap:24px!important}}.toc{{position:static!important}}}}@media (max-width:700px){{.pc2{{grid-template-columns:1fr!important}}.pc2-r{{border-left:0!important;padding-left:0!important;border-top:1px solid #D8D1C5}}.fx{{margin-left:0!important;flex-direction:column;gap:12px!important}}.fx>div{{padding:0!important;border-left:0!important}}}}</style>'''
     od = OUTDIR or F['slug']
     os.makedirs(SITE + f"fairs/{od}", exist_ok=True)
     open(SITE + f"fairs/{od}/index.html", 'w').write(h + '\n' + hero + '\n' + body + '\n' + tail(quote))
@@ -214,8 +214,8 @@ def hub():
 <p style="margin: 0; max-width: 40em; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,.85)">Major trade fairs across Europe, with dates, venues and what works on the stand. Your fair is not listed? We build at trade fairs anywhere in&nbsp;Europe.</p></div></section>
 <section style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 0"><div id="fcity" hidden style="flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; background: #DDF4EA; border: 1px solid #9FD8BF; padding: 16px 22px; margin-bottom: 24px; font-size: 17px"><span id="fcity-t"></span><a href="./" id="fcity-all" style="font-weight: 600; color: #13704D">Show all trade fairs&nbsp;→</a></div><div class="fgrid" style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px">{cards}</div>
 <p style="margin: 28px 0 0; font-size: 16px; color: #3F3B36">Dates come from each organiser and can change. See all dates in our <a href="../guides/trade-fair-calendar-2027/">trade fair calendar 2027</a>.</p></section>
-<style>.fcard{{transition:box-shadow .2s,border-color .2s}}.fcard:hover{{border-color:#5ED3A2!important;box-shadow:0 10px 24px rgba(28,26,23,.08)}}@media (max-width:1000px){{.fgrid{{grid-template-columns:repeat(2,minmax(0,1fr))!important}}}}@media (max-width:620px){{.fgrid{{grid-template-columns:1fr!important}}}}</style><script>(function(){{try{{var c=new URLSearchParams(location.search).get("city");if(!c)return;var cards=[].slice.call(document.querySelectorAll(".fcard")),hit=cards.filter(function(e){{return e.dataset.city.toLowerCase()===c.toLowerCase()}});var box=document.getElementById("fcity"),t=document.getElementById("fcity-t");var safe=c.replace(/[^A-Za-zÀ-ž \-]/g,"").slice(0,30);box.hidden=false;box.style.display="flex";if(hit.length){{cards.forEach(function(e){{if(hit.indexOf(e)<0)e.style.display="none"}});t.innerHTML="";t.appendChild(document.createTextNode("Trade fairs in "+safe+" with their own page."))}}else{{t.innerHTML="";t.appendChild(document.createTextNode("We build at fairs in "+safe+" too. Tell us which fair and we will send you a design and a price. "));var a=document.createElement("a");a.href="../index.html?fair="+encodeURIComponent(safe)+"#quote";a.textContent="Get a quote →";a.style.fontWeight="600";a.style.color="#13704D";t.appendChild(a)}}}}catch(e){{}}}})();</script>'''
-    t = tail('../index.html#quote').replace('href="../../', 'href="../').replace('src="../../', 'src="../').replace('href="../guides/"', 'href="../guides/"')
+<style>.fcard{{transition:box-shadow .2s,border-color .2s}}.fcard:hover{{border-color:#5ED3A2!important;box-shadow:0 10px 24px rgba(28,26,23,.08)}}@media (max-width:1000px){{.fgrid{{grid-template-columns:repeat(2,minmax(0,1fr))!important}}}}@media (max-width:620px){{.fgrid{{grid-template-columns:1fr!important}}}}</style><script>(function(){{try{{var c=new URLSearchParams(location.search).get("city");if(!c)return;var cards=[].slice.call(document.querySelectorAll(".fcard")),hit=cards.filter(function(e){{return e.dataset.city.toLowerCase()===c.toLowerCase()}});var box=document.getElementById("fcity"),t=document.getElementById("fcity-t");var safe=c.replace(/[^A-Za-zÀ-ž \-]/g,"").slice(0,30);box.hidden=false;box.style.display="flex";if(hit.length){{cards.forEach(function(e){{if(hit.indexOf(e)<0)e.style.display="none"}});t.innerHTML="";t.appendChild(document.createTextNode("Trade fairs in "+safe+" with their own page."))}}else{{t.innerHTML="";t.appendChild(document.createTextNode("We build at fairs in "+safe+" too. Tell us which fair and we will send you a design and a price. "));var a=document.createElement("a");a.href="../quote/?fair="+encodeURIComponent(safe);a.textContent="Get a quote →";a.style.fontWeight="600";a.style.color="#13704D";t.appendChild(a)}}}}catch(e){{}}}})();</script>'''
+    t = tail('../quote/').replace('href="../../', 'href="../').replace('src="../../', 'src="../').replace('href="../guides/"', 'href="../guides/"')
     h = h.replace('href="../fairs/" aria-current', 'href="./" aria-current')
     open(SITE + 'fairs/index.html', 'w').write(h + '\n' + hero + '\n' + t)
 

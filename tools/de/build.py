@@ -14,9 +14,12 @@ URLMAP = [('/index.html', '/de/'), ('/about.html', '/de/ueber-uns.html'), ('/leg
           ('/guides/stand-types/', '/de/ratgeber/standtypen/'), ('/guides/stand-brief/', '/de/ratgeber/standbriefing/'), ('/guides/stand-cost/', '/de/ratgeber/standkosten/'),
           ('/guides/trade-fair-timeline/', '/de/ratgeber/messe-zeitplan/'), ('/guides/trade-fair-calendar-2027/', '/de/ratgeber/messekalender-2027/'), ('/guides/', '/de/ratgeber/')]
 URLMAP += [(f'/fairs/{k}/', f'/de/messen/{v}/') for k, v in FAIR_DE.items()] + [('/fairs/', '/de/messen/')]
+STAND_DE = {'row': 'reihenstand', 'corner': 'eckstand', 'peninsula': 'kopfstand', 'island': 'inselstand'}
+URLMAP += [(f'/stands/{k}/', f'/de/messestand/{v}/') for k, v in STAND_DE.items()] + [('/quote/', '/de/angebot/'), ('/own-design/', '/de/eigenes-design/')]
 PAGES = ['about.html', 'legal.html', 'privacy.html', '404.html', 'review.html', 'review-thanks.html', 'guides/index.html'] + \
         [f'guides/{g}/index.html' for g in ['stand-types', 'stand-brief', 'stand-cost', 'trade-fair-timeline', 'trade-fair-calendar-2027']] + \
-        ['fairs/index.html'] + [f'fairs/{k}/index.html' for k in FAIR_DE]
+        ['fairs/index.html'] + [f'fairs/{k}/index.html' for k in FAIR_DE] + \
+        [f'stands/{k}/index.html' for k in STAND_DE] + ['quote/index.html', 'own-design/index.html']
 
 def en_url(p):  # site path of an EN page
     return '/' + (p[:-len('index.html')] if p.endswith('index.html') else p)
@@ -154,7 +157,8 @@ def build(p, missing):
           ('"We build at fairs in "+safe+" too. Tell us which fair and we will send you a design and a price. "', '"Wir bauen auch auf Messen in "+safe+". Sagen Sie uns, welche Messe, und Sie erhalten einen Entwurf und einen Preis. "'),
           ('var safe=c.replace(', 'var N={Munich:"München",Cologne:"Köln",Milan:"Mailand",Lisbon:"Lissabon"};var safe=c.replace('),
           ('"Messen in "+safe+"', '"Messen in "+(N[safe]||safe)+"'), ('"Wir bauen auch auf Messen in "+safe+"', '"Wir bauen auch auf Messen in "+(N[safe]||safe)+"'),
-          ('a.textContent="Get a quote →"', 'a.textContent="Angebot anfragen →"'), ('a.href="../index.html?fair="', 'a.href="/de/?fair="')]
+          ('a.textContent="Get a quote →"', 'a.textContent="Angebot anfragen →"'), ('a.href="../quote/?fair="', 'a.href="/de/angebot/?fair="'),
+          ('"Row stand (1 open side)"', '"Reihenstand (1 Seite offen)"'), ('"Corner stand (2 open sides)"', '"Eckstand (2 Seiten offen)"'), ('"Peninsula stand (3 open sides)"', '"Kopfstand (3 Seiten offen)"'), ('"Island stand (4 open sides)"', '"Inselstand (4 Seiten offen)"')]
     for a, b in js: s = s.replace(a, b)
     s = s.replace('<p lang="de" style="margin: 6px 0 0; font-size: 15px; color: rgba(255,255,255,.65)">Page not found', '<p lang="en" style="margin: 6px 0 0; font-size: 15px; color: rgba(255,255,255,.65)">Page not found')
     # fairs hub city param links: /index.html?fair=.. already mapped by href rewrite; quote links in fairs -> /de/?fair=
