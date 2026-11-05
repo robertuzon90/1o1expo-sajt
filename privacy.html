@@ -138,8 +138,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #1370
 @media (max-width:900px){header.has-mnav{position:relative;z-index:60}
 header.has-mnav>div{flex-wrap:nowrap!important;gap:12px!important}
 header.has-mnav .lsw~a{display:none!important}
-.mnb{display:inline-flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;flex:none;width:46px;height:46px;padding:0;border:1.5px solid #1C1A17;border-radius:0;background:#FFFFFF;cursor:pointer}
-.mnb span{display:block;width:20px;height:2px;background:#1C1A17;transition:transform .2s,opacity .2s}
+.mnb{display:inline-flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;flex:none;width:46px;height:46px;padding:0;margin-right:-11px;border:0;border-radius:0;background:none;cursor:pointer}
+.mnb:focus-visible{outline:2px solid #13704D;outline-offset:2px}
+.mnb span{display:block;width:24px;height:2px;background:#1C1A17;transition:transform .2s,opacity .2s}
 .mnb[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .mnb[aria-expanded="true"] span:nth-child(2){opacity:0}
 .mnb[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
