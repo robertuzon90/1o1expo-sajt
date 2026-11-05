@@ -206,7 +206,7 @@ def quote_page():
     h = ld([faq_ld(faq)], h)
     main = f'''</header><section id="quote" style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 6vw, 72px) 24px 0"><div class="qp" style="display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); grid-template-areas: 'intro form' 'aside form'; gap: 24px 48px; align-items: start">
 <div style="grid-area: intro; display: flex; flex-direction: column; gap: 24px">
-<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.08em; border: 1px solid #D8D1C5; padding: 5px 10px">YOUR QUOTE</span>
+<span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.08em; font-weight: 700; color: #1F845B">YOUR QUOTE</span>
 <h1 style="margin: 0; font-size: clamp(34px, 4.4vw, 52px); line-height: 1.04; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">A design and one price for your&nbsp;stand.</h1>
 <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #3F3B36">Only your fair and your email are required. The rest takes two minutes, and missing details are&nbsp;fine.</p>
 </div>

@@ -3,7 +3,7 @@
 generated pages inherit it from guides/stand-cost (fairs.py, pages.py, build.py)."""
 import re, glob, sys
 SITE = '/home/claude/1o1expo-sajt/'
-CSS = ('<style id="wa-pill-css">.wa-pill{width:auto!important;height:auto!important;border-radius:0!important;background:#FCFAF6!important;border:0!important;padding:7px 16px 7px 7px;gap:11px;justify-content:flex-start!important;text-decoration:none}'
+CSS = ('<style id="wa-pill-css">.wa-pill{width:auto!important;height:auto!important;border-radius:0!important;background:#FFFFFF!important;border:0!important;padding:7px 16px 7px 7px;gap:11px;justify-content:flex-start!important;text-decoration:none}'
        '.wa-ph{position:relative;width:42px;height:42px;flex:none}.wa-ph img{width:42px;height:42px;border-radius:50%;object-fit:cover;display:block}'
        '.wa-pill .wa-ph svg{position:absolute;right:-5px;bottom:-5px;width:20px!important;height:20px!important;padding:2px;background:#5ED3A2;border-radius:50%;box-sizing:border-box}'
        '.wa-t{display:flex;flex-direction:column;line-height:1.2;color:#12100E;font-family:"DM Sans",sans-serif;white-space:nowrap}.wa-t b{font-size:15px;font-weight:600}.wa-t span{font-size:13px}'
