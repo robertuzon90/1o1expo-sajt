@@ -12,7 +12,7 @@ CSS = ('<style id="wa-pill-css">.wa-pill{width:auto!important;height:auto!import
        '.wa-pill{opacity:0;visibility:hidden;transform:translateY(16px)!important;transition:opacity .25s,transform .25s,visibility .25s!important}'
        '.wa-pill.wa-on{opacity:1;visibility:visible;transform:none!important}.wa-pill.wa-on:hover,.wa-pill.wa-on:focus-visible{transform:translateY(-2px)!important}'
        '@media (prefers-reduced-motion:reduce){.wa-pill{transition:none!important}}</style>'
-       '<script id="wa-pill-js">(function(){var b=document.querySelector(".wa-pill");if(!b)return;function u(){b.classList.toggle("wa-on",scrollY>innerHeight*0.5)}addEventListener("scroll",u,{passive:true});addEventListener("resize",u);u()})();</script>')
+       '<script id="wa-pill-js">(function(){var b=document.querySelector(".wa-pill");if(!b)return;var T=[].slice.call(document.querySelectorAll("footer,.cta-box,#quote"));function hit(){var h=innerHeight;return T.some(function(e){var r=e.getBoundingClientRect();return r.top<h-8&&r.bottom>h-120})}function u(){b.classList.toggle("wa-on",scrollY>innerHeight*0.5&&!hit())}addEventListener("scroll",u,{passive:true});addEventListener("resize",u);u()})();</script>')
 A = re.compile(r'<a href="([^"]*)" class="wa-link wa-float(?: wa-pill)?" aria-label="[^"]*">(.*?)</a>', re.S)
 def run(path, de=False):
     s = open(path).read(); o = s
