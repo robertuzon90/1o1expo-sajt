@@ -3,7 +3,7 @@
 Run on EN pages after gen/fairs.py and gen/pages.py."""
 import re, glob
 SITE = '/home/claude/1o1expo-sajt/'
-CSS = ('<style id="eyb-css">.eyb{color:#1C1A17!important;background:linear-gradient(transparent 40%,#5ED3A2 40%)!important;padding:2px 5px 1px!important;margin-left:-5px!important;line-height:1.2!important;align-self:flex-start}'
+CSS = ('<style id="eyb-css">.eyb{color:#1C1A17!important;background:linear-gradient(transparent 48%,#5ED3A2 48%)!important;padding:2px 5px 3px!important;margin-left:-5px!important;line-height:1.2!important;align-self:flex-start}'
        '.eyb-d,.hero-photo .hero-left>span:first-child{color:#12100E!important;background:#5ED3A2!important;padding:3px 6px!important;margin-left:-6px!important;line-height:1.2!important;align-self:flex-start}</style>')
 SPAN = re.compile(r'<span(?: class="(?:tag|eyb|eyb-d)")? style="([^"]*font-size: ?12px[^"]*color: ?#(1F845B|5ED3A2)[^"]*)">([^<]{2,80})</span>(?!\s*<b )', re.I)
 def run(path):

@@ -69,7 +69,7 @@ def hero_side(crumb, eyebrow, h1, lead, facts, cta_href, cta_text, img, alt, not
     fx = ''.join(f'<div style="display: flex; flex-direction: column; gap: 4px; padding: 0 28px; border-left: 1px solid rgba(255,255,255,.22)"><span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2">{k.upper()}</span><b style="font-size: 18px; font-weight: 600">{v}</b></div>' for k, v in facts)
     return f'''</header><section style="background: #0E3B2B; color: #FFFFFF"><div class="fh" style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 56px; display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: 48px; align-items: center"><div style="display: flex; flex-direction: column; gap: 22px">
 <nav aria-label="Breadcrumb" style="font-size: 15px; color: rgba(255,255,255,.7)">{crumb}</nav>
-<span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2; margin-bottom: -10px">{eyebrow}</span>
+<span style="font-size: 12px; letter-spacing: .08em; font-weight: 700; color: #5ED3A2; margin-bottom: -2px">{eyebrow}</span>
 <h1 style="margin: 0; max-width: 18em; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance">{h1}</h1>
 <p style="margin: 0; max-width: 38em; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,.85)">{lead}</p>
 <div class="fx" style="display: flex; flex-wrap: wrap; gap: 16px 0; margin: 6px 0 0 -28px">{fx}</div>
