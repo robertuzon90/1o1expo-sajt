@@ -15,12 +15,12 @@ def block(m, de):
     top = (pre + 'index.html#stands') if pre not in ('', '/de/') else ('#stands' if pre == '' else '/de/#stands')
     if de:
         items = ''.join(f'<a href="/de/messestand/{d}/"><span>{nd}</span><span class="fdd-d">{od}</span></a>' for _, d, _, nd, _, od, _, _ in STANDS)
-        allt = '<a href="/de/ratgeber/standtypen/" class="fdd-all">Standtypen vergleichen&nbsp;→</a>'
+        allt = '<a href="/de/ratgeber/standtypen/" class="fdd-all" style="border-bottom: 0; margin: 4px 0 0; padding-top: 11px; border-top: 1px solid #E6E0D6">Standtypen vergleichen&nbsp;→</a>'
     else:
         items = ''.join(f'<a href="{pre}stands/{e}/"><span>{ne}</span><span class="fdd-d">{oe}</span></a>' for e, _, ne, _, oe, _, _, _ in STANDS)
-        allt = f'<a href="{pre}guides/stand-types/" class="fdd-all">Compare stand types&nbsp;→</a>'
+        allt = f'<a href="{pre}guides/stand-types/" class="fdd-all" style="border-bottom: 0; margin: 4px 0 0; padding-top: 11px; border-top: 1px solid #E6E0D6">Compare stand types&nbsp;→</a>'
     return (f'<div class="fdd"><a href="{top}"{cur} style="{style}">{label}</a><div class="fdd-m"><span class="fdd-p">'
-            f'{allt}{items}<i class="fdd-x"></i></span></div></div>')
+            f'{items}{allt}<i class="fdd-x"></i></span></div></div>')
 
 def run(path, de=False, pre=None):
     s = open(path).read(); o = s
@@ -51,5 +51,4 @@ def prefix(path):
 if __name__ == '__main__':
     en = [p for p in glob.glob(SITE + '**/*.html', recursive=True) if '/de/' not in p and '/tools/' not in p]
     n = sum(run(p, pre=('/' if p.endswith('/404.html') else prefix(p))) for p in en)
-    d = run(SITE + 'de/index.html', de=True) + run(SITE + 'de/danke.html', de=True)
-    print('en', n, 'de', d)
+    print('en', n)
