@@ -114,7 +114,7 @@ def body_html(toc, sections, extra=''):
 # ---------------------------------------------------------------- stand types
 STANDS = [
  dict(slug='row', alt='Row stand in the middle of a row, closed on three sides and open to the aisle', name='Row stand', plural='Row stands', art='a row stand', open=1, sides='1 open side', best='Graphics and storage', rent='Base rate',
-      what="A row stand stands between two neighbours: closed at the back and on both sides, open to one aisle. It is the most common stand type at most trade&nbsp;fairs.",
+      what="A row stand sits between two neighbours: closed at the back and on both sides, open to one aisle. It is the most common stand type at most trade&nbsp;fairs.",
       lead='We design and build your row stand at any trade fair in Europe, for one all-inclusive price. A first design for your space comes within 7 working&nbsp;days.',
       good=['Usually the lowest space rent per m²', 'Lots of wall space for graphics, screens and shelving', 'Easy to add a small storage room'],
       watch=['Visitors can only reach you from one aisle', 'Less visible from a distance, so your back wall has to work hard'],
@@ -153,7 +153,7 @@ STANDS = [
       faq=[('Can a peninsula stand have a meeting room?', 'Yes, usually along the back wall, where it stays out of the main flow of visitors. How big it can be depends on your stand&nbsp;size.'),
            ('Who decides how high the back wall can be?', "The organiser. The technical guidelines of each fair set the maximum height and how the side facing your neighbour must be finished. Send us the guidelines with your brief, or tell us the fair and we look them&nbsp;up.")]),
  dict(slug='island', alt='Island stand seen from above, open on all four sides', name='Island stand', plural='Island stands', art='an island stand', open=4, sides='4 open sides', best='Maximum visibility', rent='Usually the highest',
-      what="An island stand stands on its own, with aisles on all four sides and no neighbour touching it. It is seen from every aisle and has the biggest presence in the&nbsp;hall.",
+      what="An island stand sits on its own, with aisles on all four sides and no neighbour touching it. It is seen from every aisle and has the biggest presence in the&nbsp;hall.",
       lead='We design and build your island stand at any trade fair in Europe, for one all-inclusive price. A first design for your space comes within 7 working&nbsp;days.',
       good=['The biggest presence in the hall, visible from every aisle', 'Full freedom in the layout, including closed meeting rooms', 'Can be built as a double-deck stand where the hall allows it'],
       watch=['The most complex to plan, and usually the highest space rent per m²', 'Height limits, hanging points and double-deck structures need organiser approval and often structural calculations'],
@@ -193,7 +193,7 @@ def stand(S):
     what = (f'<section id="what" style="{W}; padding-top: 104px"><div class="sp-2" style="display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 40px 64px; align-items: center">'
             f'<div style="display: flex; flex-direction: column; gap: 20px">{lab("THE BASICS")}<h2 style="{H2S}">What {S["art"]}&nbsp;is</h2>'
             f'<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3F3B36">{S["what"]}</p><p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3F3B36">{S["fit"]}</p>'
-            f'<p style="margin: 4px 0 0; padding: 16px 20px; background: #DDF4EA; border: 1.5px solid #1C1A17; font-size: 16px; line-height: 1.6">Not sure which type you booked? Send us your space confirmation or the floor plan and we check it. <a href="../../quote/" style="color: #13704D; font-weight: 600; white-space: nowrap">Send your floor plan&nbsp;→</a></p></div>'
+            f'<p style="margin: 4px 0 0; padding: 16px 20px; background: #DDF4EA; border: 1.5px solid #1C1A17; font-size: 16px; line-height: 1.6">Not sure which type you booked? Send us your space confirmation or the floor plan and we&#39;ll check it. <a href="../../quote/" style="color: #13704D; font-weight: 600; white-space: nowrap">Send your floor plan&nbsp;→</a></p></div>'
             f'<figure style="margin: 0; display: flex; flex-direction: column; gap: 10px"><img src="../../img/stand-type-{S["slug"]}.jpg" alt="{S["alt"]}" width="1000" height="747" loading="lazy" style="display: block; width: 100%; height: auto; border: 1px solid #D8D1C5"><figcaption style="font-size: 14px; color: #5B5650">{S["name"]}: {S["sides"]}. The organiser sets the open sides when you book your&nbsp;space.</figcaption></figure></div></section>')
     # 2 what we plan for: heading + 2x2 cards
     cards = ''.join(f'<div style="display: flex; flex-direction: column; gap: 10px; padding: 28px; background: #FFFFFF; border: 1px solid #E6E0D6"><span style="font-size: 15px; font-weight: 700; color: #13704D">{i+1:02d}</span><b style="font-size: 21px; font-weight: 600; line-height: 1.25">{re.match(r"<b>([^<]*)</b>", t).group(1)}</b><span style="font-size: 16px; line-height: 1.6; color: #3F3B36">{re.sub(r"^<b>[^<]*</b> ?", "", t)}</span></div>' for i, t in enumerate(S['tips']))
@@ -202,7 +202,7 @@ def stand(S):
             f'<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3F3B36">A few things we plan for on almost every stand of this type. Yours is drawn from scratch for your hall, your size and your open&nbsp;sides.</p></div>'
             f'<div class="sp-4" style="display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px">{cards}</div></section>')
     # 3 concepts: two large images
-    imgs = ''.join(f'<figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><img src="../../img/concept-{S["slug"]}-{i}.jpg" alt="Concept visualisation of {S["art"]}, design {i}" width="1200" height="900" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid #D8D1C5"><figcaption style="font-size: 14px; color: #5B5650">Concept visualisation</figcaption></figure>' for i in (1, 2))
+    imgs = ''.join(f'<figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><img src="../../img/concept-{S["slug"]}-{i}.jpg" alt="Concept visualisation of {S["art"]}, design {i}" width="1200" height="900" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid #D8D1C5"></figure>' for i in (1, 2))
     designs = (f'<section id="designs" style="{W}; padding-top: 104px; display: flex; flex-direction: column; gap: 32px"><div style="display: flex; flex-direction: column; gap: 20px">{lab("CONCEPT DESIGNS")}<h2 style="{H2S}">Two concepts for {S["art"]}</h2></div>'
                f'<div class="sp-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">{imgs}</div></section>')
     # 4-7: the same sections as on the homepage (copied from index.html, content adapted)
@@ -259,7 +259,7 @@ def quote_page():
     nx = '<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px">' + ''.join(f'<li style="display: grid; grid-template-columns: 34px minmax(0,1fr); gap: 12px; align-items: start"><span style="width: 30px; height: 30px; border-radius: 50%; background: #0E3B2B; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">{i+1}</span><span style="font-size: 17px; line-height: 1.55"><b>{t}</b> {d}</span></li>' for i, (t, d) in enumerate(nxt)) + '</ol>'
     faq = [('Is the quote really free?', 'Yes. Your design and your price are free and come with no obligation. You only commit once you have seen both and said&nbsp;yes.'),
            ('What if we have no floor plan yet?', 'Send what you have: the fair, the date and roughly how much space you booked. Missing details are fine, we sort them out together. Not sure which stand type you booked? Send the booking confirmation and we&nbsp;check.'),
-           ('We already have a stand design. Can you build it?', 'Yes. Attach your drawings or renders in the form below, or read how we <a href="../own-design/">build your own design</a> first.'),
+           ('We already have a stand design. Can you build it?', 'Yes. Attach your drawings or renders in the form above, or read how we <a href="../own-design/">build your own design</a> first.'),
            ('What if our fair is only a few weeks away?', 'Tell us the date in the form. Within one working day, we tell you honestly whether we can still build it&nbsp;well.')]
     h = ld([faq_ld(faq)], h)
     main = f'''</header><section id="quote" style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 6vw, 72px) 24px 0"><div class="qp" style="display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); grid-template-areas: 'intro form' 'aside form'; gap: 24px 48px; align-items: start">
