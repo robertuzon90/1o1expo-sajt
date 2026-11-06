@@ -17,7 +17,7 @@ def footer(pre, home, logo, lsw):
     L = lambda h, t: f'<a href="{h}" style="color: #FFFFFF; font-size: 16px">{t}</a>'
     col = lambda t, items: f'<div class="ft-l" style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; letter-spacing: 0.08em; font-weight: 700; color: #5ED3A2">{t}</span>' + ''.join(L(h, x) for h, x in items) + '</div>'
     stands = col('STANDS', [(f'{pre}stands/row/', 'Row stands'), (f'{pre}stands/corner/', 'Corner stands'), (f'{pre}stands/peninsula/', 'Peninsula stands'), (f'{pre}stands/island/', 'Island stands'), (f'{pre}own-design/', 'Your own design')])
-    company = col('COMPANY', [(f'{pre}quote/', 'Get a quote'), (f'{ix}#offer', 'Your offer'), (f'{ix}#faq', 'FAQ'), (f'{pre}about.html', 'About us'), (f'{pre}guides/', 'Guides'), (f'{pre}fairs/', 'Trade fairs')])
+    company = col('COMPANY', [(f'{pre}quote/', 'Get a quote'), (f'{ix}#offer', 'Your offer'), (f'{pre}about.html', 'About us'), (f'{pre}guides/', 'Guides'), (f'{pre}fairs/', 'Trade fairs')])
     contact = (f'<div class="ft-c" style="display: flex; flex-direction: column; gap: 12px"><span style="font-size: 12px; letter-spacing: 0.08em; font-weight: 700; color: #5ED3A2">CONTACT</span>'
                f'<a href="mailto:robert@1o1expo.com" style="display: inline-flex; align-items: center; gap: 10px; color: #FFFFFF; font-size: 16px"><span style="color: #5ED3A2; display: inline-flex">{I_MAIL}</span><span>robert@1o1expo.com</span></a>'
                f'<a href="{pre}quote/" class="wa-link" style="display: inline-flex; align-items: center; gap: 10px; color: #FFFFFF; font-size: 16px"><span style="color: #5ED3A2; display: inline-flex">{I_WA}</span><span>WhatsApp</span></a>'
