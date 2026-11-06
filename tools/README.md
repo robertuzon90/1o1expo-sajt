@@ -20,5 +20,7 @@ Paths in the scripts point to /home/claude/... – adjust `SITE` and the json pa
 Order after a header or footer change: `navdd.py`, `navstands.py`, `footer.py`, `gen/fairs.py`, `gen/pages.py`, `gen/notfound.py`, then `footer.py` (site footer), `eyebrow.py` (marker style for section labels) and `wapill.py` (floating WhatsApp button), then the German build, `link_lang.py` and `sitemap.py`.
 
 ## Fair pages and 404 (`tools/gen/`)
+The calendar card on `/fairs/` comes from `tools/gen/calendar_card.html`. `navdd.py` adds '2027 calendar' as the last item of the Trade fairs dropdown on EN pages.
+
 `fairs.py` builds `/fairs/` and the ten fair pages, `notfound.py` builds `404.html`. Run `navdd.py`, then the German build and `link_lang.py` afterwards.
 When a fair is added, also add it to the list in `tools/de/navdd.py`.

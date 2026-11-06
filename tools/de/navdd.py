@@ -37,8 +37,12 @@ def block(m, de):
     else:
         items = ''.join(f'<a href="{base}{e}/"><span>{ne}</span><span class="fdd-d">{de_}</span></a>' for e, _, ne, _, de_, _ in FAIRS)
         allt = 'All trade fairs&nbsp;→'
+    cal = ''
+    if not de:
+        ch = '../guides/trade-fair-calendar-2027/' if base == './' else base[:-len('fairs/')] + 'guides/trade-fair-calendar-2027/'
+        cal = f'<a href="{ch}" class="fdd-all" style="border-bottom: 0; margin: 4px 0 0; padding-top: 11px; border-top: 1px solid #E6E0D6">2027 calendar&nbsp;→</a>'
     return (f'<div class="fdd"><a href="{base}"{cur} style="{style}">{label}</a><div class="fdd-m"><span class="fdd-p">'
-            f'<a href="{base}" class="fdd-all">{allt}</a>{items}<i class="fdd-x"></i></span></div></div>')
+            f'<a href="{base}" class="fdd-all">{allt}</a>{items}{cal}<i class="fdd-x"></i></span></div></div>')
 
 def run(path, de=False):
     s = open(path).read()
@@ -60,5 +64,4 @@ def run(path, de=False):
 if __name__ == '__main__':
     en = [p for p in glob.glob(SITE + '**/*.html', recursive=True) if '/de/' not in p and '/tools/' not in p]
     n = sum(run(p) for p in en)
-    d = run(SITE + 'de/index.html', de=True)
-    print('en', n, 'de/index', d)
+    print('en', n)
